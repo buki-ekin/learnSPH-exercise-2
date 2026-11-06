@@ -33,7 +33,7 @@ void update_height(const std::vector<Eigen::Vector3d>& positions,
 int main(int argc, char** argv)
 {
     const std::filesystem::path output_folder =
-        argc > 1 ? argv[1] : "output/assignment5_collision";
+        argc > 1 ? argv[1] : "output/assignment5_freefall";
 
     std::filesystem::create_directories(output_folder);
 	// Assignment 5(a): fluid particle radius is 3 cm.
@@ -93,24 +93,9 @@ for (int ix = 0; ; ++ix) {
     }
 }
 
-	    // Assignment 5(a)(iii): create a second identical fluid block.
-    const std::size_t particles_per_block = positions.size();
-
-    // Copy each position before push_back, which may reallocate storage.
-    for (std::size_t i = 0; i < particles_per_block; ++i) {
-        const Eigen::Vector3d shifted_position =
-            positions[i] + Eigen::Vector3d(1.2, 0.0, 0.0);
-
-        positions.push_back(shifted_position);
-    }
-
-    // Opposing velocities give a relative approach speed of 2 m/s.
+	       // Assignment 5(a)(iv): a single fluid block starts from rest.
     std::vector<Eigen::Vector3d> velocities(
         positions.size(), Eigen::Vector3d::Zero());
-
-    for (std::size_t i = 0; i < positions.size(); ++i) {
-        velocities[i].x() = (i < particles_per_block) ? 1.0 : -1.0;
-    }
 	std::vector<double> heights(positions.size());
 	// Store the estimated density of each fluid particle in kg/m^3.
 	std::vector<double> densities(positions.size(), 0.0);
@@ -120,10 +105,12 @@ for (int ix = 0; ; ++ix) {
 	// Search for neighbors inside the kernel's support radius.
 	CompactNSearch::NeighborhoodSearch search(compact_support);	const unsigned int point_set = search.add_point_set(
 		positions.front().data(), positions.size(), true, true, true);
+    // Assignment 5(a)(iv): gravity acts in the negative z direction.
+    const Eigen::Vector3d gravity(0.0, 0.0, -9.81);
 
-	const Eigen::Vector3d gravity(0.0, 0.0, 0.0);
-    // Allow spreading in both transverse directions during the collision.
-    const Eigen::Vector3d box_min(-5.0, -5.0, -5.0);
+    // Allow approximately 44 metres of free fall over three seconds.
+    // This is a diagnostic box, not a physical boundary.
+    const Eigen::Vector3d box_min(-5.0, -5.0, -60.0);
     const Eigen::Vector3d box_max(5.0, 5.0, 5.0);
 	
 	    // Save initial positions for the stationary baseline check.

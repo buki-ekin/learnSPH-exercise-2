@@ -7,7 +7,7 @@
 #include "../learnSPH/kernel.h"
 #include <CompactNSearch/CompactNSearch>
 #include <Eigen/Dense>
-
+#include <cmath>
 #include "../learnSPH/io.h"
 #include "../learnSPH/sampling.h"
 #include "../learnSPH/simulation.h"
@@ -32,11 +32,12 @@ void update_height(const std::vector<Eigen::Vector3d>& positions,
 
 int main(int argc, char** argv)
 {
-	const std::filesystem::path output_folder =
-		argc > 1 ? argv[1] : "output/vtk";
-	std::filesystem::create_directories(output_folder);
+    const std::filesystem::path output_folder =
+        argc > 1 ? argv[1] : "output/assignment5_collision";
 
-	constexpr double particle_radius = 0.05;
+    std::filesystem::create_directories(output_folder);
+	// Assignment 5(a): fluid particle radius is 3 cm.
+	constexpr double particle_radius = 0.03;		
 	constexpr double particle_distance = 2.0 * particle_radius;
 	// Rest density of water in kg/m^3.
     constexpr double rest_density = 1000.0;
@@ -46,10 +47,18 @@ int main(int argc, char** argv)
     particle_distance * particle_distance * particle_distance;
 
    // Particle mass in kg.
-    constexpr double particle_mass = rest_density * particle_volume;
-	constexpr double frame_rate = 30.0;
-	constexpr int number_of_frames = 91;
-	// Kernel smoothing length required by Exercise 2.
+    // Assignment 5(a)(i): reduce nominal fluid mass by 10%
+    // to limit initial pressure caused by sampling errors.
+    constexpr double particle_mass =
+        0.9 * rest_density * particle_volume;
+
+    constexpr double pressure_stiffness = 1000.0;
+
+    // Assignment 5(a)(ii): fluid kinematic viscosity in m^2/s.
+    constexpr double fluid_viscosity = 0.1;
+    constexpr double frame_rate = 30.0;
+    constexpr int number_of_frames = 91;
+		// Kernel smoothing length required by Exercise 2.
     constexpr double smoothing_length = 1.2 * particle_distance;
 	constexpr double compact_support = 2.0 * smoothing_length;
 
@@ -57,16 +66,51 @@ int main(int argc, char** argv)
 	const learnSPH::kernel::CubicSplineKernel kernel(smoothing_length); 
 	std::vector<Eigen::Vector3d> positions;
 
-	// Fill the whole cube with particles. A two-metre cube gives us a
-	// denser-looking block while keeping the exercise's 5 cm radius.
-	learnSPH::sampling::fluid_box(
-		positions,
-		Eigen::Vector3d(-1.0, -1.0, 9.0),
-		Eigen::Vector3d(1.0, 1.0, 11.0),
-		particle_distance);
+	// Assignment 5(a): sample a one-metre cube with 6 cm spacing.
+// Keep particle centres at least one radius inside the box.
+const double box_length = 1.0;
 
-	std::vector<Eigen::Vector3d> velocities(
-		positions.size(), Eigen::Vector3d::Zero());
+for (int ix = 0; ; ++ix) {
+    const double x = particle_radius + ix * particle_distance;
+    if (x > box_length - particle_radius + 1e-12) {
+        break;
+    }
+
+    for (int iy = 0; ; ++iy) {
+        const double y = particle_radius + iy * particle_distance;
+        if (y > box_length - particle_radius + 1e-12) {
+            break;
+        }
+
+        for (int iz = 0; ; ++iz) {
+            const double z = particle_radius + iz * particle_distance;
+            if (z > box_length - particle_radius + 1e-12) {
+                break;
+            }
+
+            positions.emplace_back(x, y, z);
+        }
+    }
+}
+
+	    // Assignment 5(a)(iii): create a second identical fluid block.
+    const std::size_t particles_per_block = positions.size();
+
+    // Copy each position before push_back, which may reallocate storage.
+    for (std::size_t i = 0; i < particles_per_block; ++i) {
+        const Eigen::Vector3d shifted_position =
+            positions[i] + Eigen::Vector3d(1.2, 0.0, 0.0);
+
+        positions.push_back(shifted_position);
+    }
+
+    // Opposing velocities give a relative approach speed of 2 m/s.
+    std::vector<Eigen::Vector3d> velocities(
+        positions.size(), Eigen::Vector3d::Zero());
+
+    for (std::size_t i = 0; i < positions.size(); ++i) {
+        velocities[i].x() = (i < particles_per_block) ? 1.0 : -1.0;
+    }
 	std::vector<double> heights(positions.size());
 	// Store the estimated density of each fluid particle in kg/m^3.
 	std::vector<double> densities(positions.size(), 0.0);
@@ -77,10 +121,15 @@ int main(int argc, char** argv)
 	CompactNSearch::NeighborhoodSearch search(compact_support);	const unsigned int point_set = search.add_point_set(
 		positions.front().data(), positions.size(), true, true, true);
 
-	const Eigen::Vector3d gravity(0.0, 0.0, -9.81);
-	const Eigen::Vector3d box_min(-5.0, -5.0, -1.0);
-	const Eigen::Vector3d box_max(5.0, 5.0, 12.0);
-	double simulation_time = 0.0;
+	const Eigen::Vector3d gravity(0.0, 0.0, 0.0);
+    // Allow spreading in both transverse directions during the collision.
+    const Eigen::Vector3d box_min(-5.0, -5.0, -5.0);
+    const Eigen::Vector3d box_max(5.0, 5.0, 5.0);
+	
+	    // Save initial positions for the stationary baseline check.
+    const std::vector<Eigen::Vector3d> initial_positions = positions;
+
+    double simulation_time = 0.0;
 
 	learnSPH::write_particles_to_vtk(
 		frame_path(output_folder, 0), positions, heights, velocities);
@@ -89,13 +138,38 @@ int main(int argc, char** argv)
 		const double next_frame_time = frame / frame_rate;
 
 		while (simulation_time + 1e-12 < next_frame_time) {
-			// Delete particles outside the safety box.
-			const std::size_t removed = learnSPH::remove_outside_aabb(
-				positions, velocities, heights, box_min, box_max);
-			if (removed > 0) {
-				search.resize_point_set(
-					point_set, positions.front().data(), positions.size());
-			}
+			            // Diagnose the first escaping particle before deleting anything.
+            for (std::size_t i = 0; i < positions.size(); ++i) {
+                const bool outside =
+                    (positions[i].array() < box_min.array()).any()
+                    || (positions[i].array() > box_max.array()).any();
+
+                if (outside) {
+                    double maximum_speed_now = 0.0;
+
+                    for (const Eigen::Vector3d& velocity : velocities) {
+                        maximum_speed_now = std::max(
+                            maximum_speed_now, velocity.norm());
+                    }
+
+                    std::cerr
+                        << "\nCollision boundary check\n"
+                        << "Time [s]: " << simulation_time << '\n'
+                        << "Particle index: " << i << '\n'
+                        << "Position [m]: "
+                        << positions[i].transpose() << '\n'
+                        << "Velocity [m/s]: "
+                        << velocities[i].transpose() << '\n'
+                        << "Maximum speed [m/s]: "
+                        << maximum_speed_now << '\n'
+                        << "Box minimum [m]: "
+                        << box_min.transpose() << '\n'
+                        << "Box maximum [m]: "
+                        << box_max.transpose() << '\n';
+
+                    return 1;
+                }
+            }
 
 			search.find_neighbors();
 			// Assignment 1(a): estimate fluid density from neighboring particles.
@@ -128,31 +202,74 @@ int main(int argc, char** argv)
 
 			// CFL chooses a safe time step.
 			const double cfl_step = learnSPH::cfl_time_step(
-				velocities, particle_radius, 0.5, 0.0001, 0.01);
+				velocities, particle_radius, 0.5, 0.0001, 0.001);
 			const double time_step =
 				std::min(cfl_step, next_frame_time - simulation_time);
+                       // Assignment 5(a)(i): compute pressure from current densities.
+            std::vector<double> pressures(positions.size(), 0.0);
 
-			// Gravity pulls every moving particle down.
-			std::vector<Eigen::Vector3d> accelerations(
-				positions.size(), gravity);
-			for (std::size_t i = 0; i < positions.size(); ++i) {
-				if (positions[i].z() <= particle_radius &&
-				    velocities[i].z() == 0.0) {
-					accelerations[i].setZero();
-				}
-			}
+            for (std::size_t i = 0; i < positions.size(); ++i) {
+                pressures[i] = std::max(
+                    0.0,
+                    pressure_stiffness * (densities[i] - rest_density));
+            }
 
-			learnSPH::semi_implicit_euler(
-				positions, velocities, accelerations, time_step);
+            // Fluid pressure and viscosity are active; no boundaries yet.            // Gravity remains zero.
+            std::vector<Eigen::Vector3d> accelerations(
+                positions.size(), gravity);
 
-			// Stop a particle when it touches the floor.
-			for (std::size_t i = 0; i < positions.size(); ++i) {
-				if (positions[i].z() <= particle_radius) {
-					positions[i].z() = particle_radius;
-					velocities[i].setZero();
-				}
-			}
+            for (unsigned int i = 0; i < positions.size(); ++i) {
+                const double pressure_factor_i =
+                    pressures[i] / (densities[i] * densities[i]);
 
+                for (unsigned int n = 0;
+                     n < fluid_neighbors.n_neighbors(point_set, i);
+                     ++n) {
+                    const unsigned int j =
+                        fluid_neighbors.neighbor(point_set, i, n);
+
+                    const double pressure_factor_j =
+                        pressures[j] / (densities[j] * densities[j]);
+
+                    const Eigen::Vector3d separation =
+                        positions[i] - positions[j];
+
+                           const Eigen::Vector3d gradient =
+                        kernel.gradient(separation);
+
+                    // Pressure acceleration.
+                    accelerations[i] -=
+                        particle_mass
+                        * (pressure_factor_i + pressure_factor_j)
+                        * gradient;
+
+                    // Assignment 5(a)(ii): fluid viscosity acceleration.
+                    const double geometric_factor =
+                        separation.dot(gradient)
+                        / (separation.squaredNorm()
+                           + 0.01 * smoothing_length * smoothing_length);
+
+                                      accelerations[i] +=
+                        2.0 * fluid_viscosity
+                        * (particle_mass / densities[j])
+                        * geometric_factor
+                        * (velocities[i] - velocities[j]);
+                } // End neighbor loop.
+            } // End particle loop.
+
+            learnSPH::semi_implicit_euler(
+                positions, velocities, accelerations, time_step);
+
+            // Detect numerical failure before the next neighbor search.
+            for (std::size_t i = 0; i < positions.size(); ++i) {
+                if (!positions[i].allFinite() ||
+                    !velocities[i].allFinite()) {
+                    std::cerr << "Non-finite particle state at t = "
+                              << simulation_time + time_step
+                              << " s.\n";
+                    return 1;
+                }
+            }
 			simulation_time += time_step;
 		}
 
@@ -160,9 +277,34 @@ int main(int argc, char** argv)
 		learnSPH::write_particles_to_vtk(
 			frame_path(output_folder, frame), positions, heights, velocities);
 	}
+    std::cout << "Particles: " << positions.size() << '\n';
+    std::cout << "Frames: " << number_of_frames << '\n';
+    std::cout << "Output: " << output_folder << '\n';
+    // Assignment 5(a)(iii): report particle count, displacement and speed.
+    if (positions.size() != initial_positions.size()) {
+        std::cerr << "FAIL: particle count changed.\n";
+        return 1;
+    }
 
-	std::cout << "Particles: " << positions.size() << '\n';
-	std::cout << "Frames: " << number_of_frames << '\n';
-	std::cout << "Output: " << output_folder << '\n';
-	return 0;
+    double maximum_displacement = 0.0;
+    double maximum_speed = 0.0;
+
+    for (std::size_t i = 0; i < positions.size(); ++i) {
+        maximum_displacement = std::max(
+            maximum_displacement,
+            (positions[i] - initial_positions[i]).norm());
+
+        maximum_speed = std::max(
+            maximum_speed,
+            velocities[i].norm());
+    }
+
+    std::cout << "Maximum displacement [m]: "
+              << maximum_displacement << '\n';
+    std::cout << "Maximum speed [m/s]: "
+              << maximum_speed << '\n';
+
+    return 0;
+
+	
 }

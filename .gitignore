@@ -1,0 +1,39 @@
+# CMake build files
+build/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# macOS files
+.DS_Store
+
+# Course documents and old geometry files are not part of the solution
+DERS_NOTLARI_TR.md
+EXERCISE_1_REPORT.md
+*.pdf
+*.imscc
+*.tex
+*.bib
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.cls
+res/
+
+# Build directories
+build/
+cmake-build-*/
+
+# Generated simulation output
+output/
+*.vtk
+
+# macOS metadata
+.DS_Store
+
+# Generated results
+results/

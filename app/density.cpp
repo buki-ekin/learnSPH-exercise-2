@@ -4,10 +4,11 @@
 #include "../learnSPH/sampling.h"
 #include <iostream>
 #include <vector>
-
+#include <algorithm>
 #include <Eigen/Dense>
 #include <CompactNSearch/CompactNSearch>
-
+#include <filesystem>
+#include "../learnSPH/io.h"
 #include "../learnSPH/kernel.h"
 
 // Assignment 2(a): compute effective boundary particle volumes.
@@ -290,7 +291,108 @@ int main()
               << maximum_volume << '\n';
     std::cout << "Total effective boundary mass [kg]: "
               << total_boundary_mass << '\n';
-              
+    
+        // Assignment 3(a): find boundary neighbors for each fluid particle.
+    CompactNSearch::NeighborhoodSearch coupled_search(compact_support);
+
+    const unsigned int fluid_set = coupled_search.add_point_set(
+        positions.front().data(),
+        static_cast<unsigned int>(positions.size()),
+        true, true, true);
+
+    const unsigned int wall_set = coupled_search.add_point_set(
+        boundary_positions.front().data(),
+        static_cast<unsigned int>(boundary_positions.size()),
+        false, true, true);
+
+    coupled_search.find_neighbors();
+
+    const auto& fluid_point_set = coupled_search.point_set(fluid_set);
+
+    // Start from the fluid-only densities calculated in Assignment 1.
+    // Keep the original values unchanged for comparison.
+    std::vector<double> densities_with_boundary = densities;
+
+    unsigned int affected_particles = 0;
+    double maximum_boundary_contribution = 0.0;
+
+    for (unsigned int i = 0; i < positions.size(); ++i) {
+        double boundary_contribution = 0.0;
+
+        for (unsigned int n = 0;
+             n < fluid_point_set.n_neighbors(wall_set, i);
+             ++n) {
+            const unsigned int k =
+                fluid_point_set.neighbor(wall_set, i, n);
+
+            const Eigen::Vector3d separation =
+                positions[i] - boundary_positions[k];
+
+            // Effective boundary mass is rest_density * boundary_volume.
+            boundary_contribution +=
+                boundary_masses[k] * kernel.value(separation);
+        }
+
+        densities_with_boundary[i] += boundary_contribution;
+
+        if (boundary_contribution > 0.0) {
+            ++affected_particles;
+        }
+
+        maximum_boundary_contribution = std::max(
+            maximum_boundary_contribution, boundary_contribution);
+    }
+
+    // Report the density distribution after adding the boundary.
+    double minimum_with_boundary = densities_with_boundary.front();
+    double maximum_with_boundary = densities_with_boundary.front();
+    double sum_with_boundary = 0.0;
+
+    for (const double density : densities_with_boundary) {
+        minimum_with_boundary = std::min(minimum_with_boundary, density);
+        maximum_with_boundary = std::max(maximum_with_boundary, density);
+        sum_with_boundary += density;
+    }
+
+    std::cout << "\nAssignment 3(a): density with boundary contribution\n";
+    std::cout << "Particles receiving a boundary contribution: "
+              << affected_particles << '\n';
+    std::cout << "Maximum boundary contribution [kg/m^3]: "
+              << maximum_boundary_contribution << '\n';
+    std::cout << "Minimum density [kg/m^3]: "
+              << minimum_with_boundary << '\n';
+    std::cout << "Maximum density [kg/m^3]: "
+              << maximum_with_boundary << '\n';
+    std::cout << "Mean density [kg/m^3]: "
+              << sum_with_boundary / densities_with_boundary.size()
+              << '\n';  
+        // Assignment 3(b): export fluid densities for visualization.
+    const std::filesystem::path output_folder =
+        "output/assignment3";
+
+    std::filesystem::create_directories(output_folder);
+
+    // Export the fluid-only estimate as a reference.
+    learnSPH::write_particles_to_vtk(
+        (output_folder / "fluid_density_without_boundary.vtk").string(),
+        positions,
+        densities);
+
+    // Export the density estimate including the floor contribution.
+    learnSPH::write_particles_to_vtk(
+        (output_folder / "fluid_density_with_boundary.vtk").string(),
+        positions,
+        densities_with_boundary);
+
+    // Export boundary positions and their corrected volumes.
+    learnSPH::write_particles_to_vtk(
+        (output_folder / "boundary_volumes.vtk").string(),
+        boundary_positions,
+        boundary_volumes);
+
+    std::cout << "\nAssignment 3(b): VTK files saved to "
+              << output_folder.string() << '\n';                  
+
 return 0;
 
 }

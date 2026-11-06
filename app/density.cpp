@@ -77,7 +77,23 @@ std::vector<double> compute_boundary_masses(
 
     return masses;
 }
+// Assignment 4(a), Equation (11): compute non-negative pressure.
+// Density below the rest density produces zero pressure.
+std::vector<double> compute_pressures(
+    const std::vector<double>& densities,
+    const double rest_density,
+    const double stiffness)
+{
+    std::vector<double> pressures(densities.size(), 0.0);
 
+    for (std::size_t i = 0; i < densities.size(); ++i) {
+        pressures[i] = std::max(
+            0.0,
+            stiffness * (densities[i] - rest_density));
+    }
+
+    return pressures;
+}
 int main()
 {
     // Assignment 1(b): sample a one-litre cube with 20^3 particles.
@@ -392,7 +408,250 @@ int main()
 
     std::cout << "\nAssignment 3(b): VTK files saved to "
               << output_folder.string() << '\n';                  
+    // Assignment 4(a): evaluate pressure on the existing static test case.
+    // This checks the equation of state; no particles are moved yet.
+    const double pressure_stiffness = 1000.0;
 
+    const std::vector<double> pressures = compute_pressures(
+        densities_with_boundary,
+        rest_density,
+        pressure_stiffness);
+
+    double maximum_pressure = 0.0;
+    std::size_t positive_pressure_count = 0;
+
+    for (const double pressure : pressures) {
+        maximum_pressure = std::max(maximum_pressure, pressure);
+
+        if (pressure > 0.0) {
+            ++positive_pressure_count;
+        }
+    }
+
+    std::cout << "\nAssignment 4(a): pressure calculation\n";
+    std::cout << "Maximum pressure [Pa]: "
+              << maximum_pressure << '\n';
+    std::cout << "Particles with positive pressure: "
+              << positive_pressure_count << " / "
+              << pressures.size() << '\n';
+
+    // Assignment 4(a), Equation (12): pressure acceleration.
+    // Use densities that already include boundary contributions.
+    std::vector<Eigen::Vector3d> pressure_accelerations(
+        positions.size(), Eigen::Vector3d::Zero());
+
+    for (unsigned int i = 0; i < positions.size(); ++i) {
+        const double rho_i = densities_with_boundary[i];
+        const double pressure_factor_i =
+            pressures[i] / (rho_i * rho_i);
+
+        // Fluid-fluid pressure interaction.
+        for (unsigned int n = 0;
+             n < fluid_point_set.n_neighbors(fluid_set, i);
+             ++n) {
+            const unsigned int j =
+                fluid_point_set.neighbor(fluid_set, i, n);
+
+            const double rho_j = densities_with_boundary[j];
+            const double pressure_factor_j =
+                pressures[j] / (rho_j * rho_j);
+
+            // The gradient is taken with respect to particle i.
+            const Eigen::Vector3d separation =
+                positions[i] - positions[j];
+
+            const Eigen::Vector3d gradient =
+                kernel.gradient(separation);
+
+            pressure_accelerations[i] -=
+                particle_mass
+                * (pressure_factor_i + pressure_factor_j)
+                * gradient;
+        }
+
+        // Fluid-boundary pressure interaction.
+        for (unsigned int n = 0;
+             n < fluid_point_set.n_neighbors(wall_set, i);
+             ++n) {
+            const unsigned int k =
+                fluid_point_set.neighbor(wall_set, i, n);
+
+            const Eigen::Vector3d separation =
+                positions[i] - boundary_positions[k];
+
+            const Eigen::Vector3d gradient =
+                kernel.gradient(separation);
+
+            pressure_accelerations[i] -=
+                boundary_masses[k]
+                * pressure_factor_i
+                * gradient;
+        }
+    }
+
+    // Report acceleration magnitude, not force.
+    double maximum_pressure_acceleration = 0.0;
+
+    for (const Eigen::Vector3d& acceleration : pressure_accelerations) {
+        maximum_pressure_acceleration = std::max(
+            maximum_pressure_acceleration,
+            acceleration.norm());
+    }
+
+    std::cout << "\nAssignment 4(a): pressure acceleration\n";
+    std::cout << "Maximum pressure acceleration [m/s^2]: "
+              << maximum_pressure_acceleration << '\n'; 
+              
+    // Assignment 4(a), Equation (13): viscosity acceleration.
+    // These coefficients are for checking the implementation.
+    const double fluid_viscosity = 0.1;
+    const double boundary_viscosity = 0.0;
+    // Test fluid-fluid viscosity with a vertical gradient of x velocity.
+    // Boundary viscosity is disabled for this test.
+    std::vector<Eigen::Vector3d> velocities(
+        positions.size(), Eigen::Vector3d::Zero());
+
+    for (std::size_t i = 0; i < positions.size(); ++i) {
+        velocities[i].x() = positions[i].z() / box_length;
+    }
+
+    std::vector<Eigen::Vector3d> viscosity_accelerations(
+        positions.size(), Eigen::Vector3d::Zero());
+
+    const double regularization =
+        0.01 * smoothing_length * smoothing_length;
+
+    for (unsigned int i = 0; i < positions.size(); ++i) {
+        // Fluid-fluid viscosity reduces relative particle velocities.
+        for (unsigned int n = 0;
+             n < fluid_point_set.n_neighbors(fluid_set, i);
+             ++n) {
+            const unsigned int j =
+                fluid_point_set.neighbor(fluid_set, i, n);
+
+            const Eigen::Vector3d separation =
+                positions[i] - positions[j];
+
+            const Eigen::Vector3d gradient =
+                kernel.gradient(separation);
+
+            const double geometric_factor =
+                separation.dot(gradient)
+                / (separation.squaredNorm() + regularization);
+
+            viscosity_accelerations[i] +=
+                2.0 * fluid_viscosity
+                * (particle_mass / densities_with_boundary[j])
+                * geometric_factor
+                * (velocities[i] - velocities[j]);
+        }
+
+        // Boundary viscosity assumes a stationary wall.
+        for (unsigned int n = 0;
+             n < fluid_point_set.n_neighbors(wall_set, i);
+             ++n) {
+            const unsigned int k =
+                fluid_point_set.neighbor(wall_set, i, n);
+
+            const Eigen::Vector3d separation =
+                positions[i] - boundary_positions[k];
+
+            const Eigen::Vector3d gradient =
+                kernel.gradient(separation);
+
+            const double geometric_factor =
+                separation.dot(gradient)
+                / (separation.squaredNorm() + regularization);
+
+            viscosity_accelerations[i] +=
+                2.0 * boundary_viscosity
+                * boundary_volumes[k]
+                * geometric_factor
+                * velocities[i];
+        }
+    }
+
+    double maximum_viscosity_acceleration = 0.0;
+
+    for (const Eigen::Vector3d& acceleration : viscosity_accelerations) {
+        maximum_viscosity_acceleration = std::max(
+            maximum_viscosity_acceleration,
+            acceleration.norm());
+    }
+
+    std::cout << "\nAssignment 4(a): viscosity acceleration\n";
+    std::cout << "Maximum viscosity acceleration [m/s^2]: "
+              << maximum_viscosity_acceleration << '\n';
+              
+    
+    // Verify that fluid viscosity reduces the imposed velocity difference.
+    double bottom_layer_ax = 0.0;
+    double top_layer_ax = 0.0;
+    std::size_t bottom_count = 0;
+    std::size_t top_count = 0;
+
+    for (std::size_t i = 0; i < positions.size(); ++i) {
+        if (positions[i].z() < particle_distance) {
+            bottom_layer_ax += viscosity_accelerations[i].x();
+            ++bottom_count;
+        }
+
+        if (positions[i].z() > box_length - particle_distance) {
+            top_layer_ax += viscosity_accelerations[i].x();
+            ++top_count;
+        }
+    }
+
+    std::cout << "Bottom-layer mean viscosity ax [m/s^2]: "
+              << bottom_layer_ax / bottom_count << '\n';
+
+    std::cout << "Top-layer mean viscosity ax [m/s^2]: "
+              << top_layer_ax / top_count << '\n'; 
+              
+              
+    // Assignment 4(a), Equation (14): external acceleration.
+    // Gravity is already an acceleration; do not multiply it by mass.
+    const Eigen::Vector3d gravity(0.0, 0.0, -9.81);
+
+    // Combine pressure, viscosity and external acceleration.
+    std::vector<Eigen::Vector3d> total_accelerations(
+        positions.size(), Eigen::Vector3d::Zero());
+
+    double maximum_total_acceleration = 0.0;
+    double maximum_gravity_residual = 0.0;
+
+    for (std::size_t i = 0; i < positions.size(); ++i) {
+        total_accelerations[i] =
+            pressure_accelerations[i]
+            + viscosity_accelerations[i]
+            + gravity;
+
+        maximum_total_acceleration = std::max(
+            maximum_total_acceleration,
+            total_accelerations[i].norm());
+
+        // After removing pressure and viscosity, only gravity should remain.
+        const Eigen::Vector3d residual =
+            (total_accelerations[i]
+             - pressure_accelerations[i]
+             - viscosity_accelerations[i])
+            - gravity;
+
+        maximum_gravity_residual = std::max(
+            maximum_gravity_residual,
+            residual.norm());
+    }
+
+    std::cout << "\nAssignment 4(a): total acceleration\n";
+    std::cout << "Gravity [m/s^2]: "
+              << gravity.transpose() << '\n';
+    std::cout << "Maximum total acceleration [m/s^2]: "
+              << maximum_total_acceleration << '\n';
+    std::cout << "Gravity addition residual [m/s^2]: "
+              << maximum_gravity_residual << '\n';
+              
+              
+              
 return 0;
 
 }

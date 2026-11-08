@@ -1,0 +1,67 @@
+Particle count: 8000
+Particle radius [m]: 0.0025
+Particle mass [kg]: 0.000125
+Total mass [kg]: 1
+Minimum density [kg/m^3]: 491.388
+Maximum density [kg/m^3]: 1000.81
+Mean density [kg/m^3]: 938.763
+Particles within 5% of rest density: 5832 / 8000
+
+Density histogram [kg/m^3]
+Intervals include the lower bound, exclude the upper.
+One * represents approximately 100 particles.
+
+[   0,   50) :    0  
+[  50,  100) :    0  
+[ 100,  150) :    0  
+[ 150,  200) :    0  
+[ 200,  250) :    0  
+[ 250,  300) :    0  
+[ 300,  350) :    0  
+[ 350,  400) :    0  
+[ 400,  450) :    0  
+[ 450,  500) :    8  *
+[ 500,  550) :    0  
+[ 550,  600) :    0  
+[ 600,  650) :  216  ***
+[ 650,  700) :    0  
+[ 700,  750) :    0  
+[ 750,  800) : 1944  ********************
+[ 800,  850) :    0  
+[ 850,  900) :    0  
+[ 900,  950) :    0  
+[ 950, 1000) : 1736  ******************
+[1000, 1050) : 4096  *****************************************
+
+Assignment 2(b): boundary sampling
+Boundary particle count: 1359
+Boundary spacing [m]: 0.004
+Minimum boundary volume [m^3]: 6.6721e-08
+Maximum boundary volume [m^3]: 2.35071e-07
+Total effective boundary mass [kg]: 0.148102
+
+Assignment 3(a): density with boundary contribution
+Particles receiving a boundary contribution: 800
+Maximum boundary contribution [kg/m^3]: 391.882
+Minimum density [kg/m^3]: 491.388
+Maximum density [kg/m^3]: 1183.88
+Mean density [kg/m^3]: 956.489
+
+Assignment 3(b): VTK files saved to output/assignment3
+
+Assignment 4(a): pressure calculation
+Maximum pressure [Pa]: 183883
+Particles with positive pressure: 4736 / 8000
+
+Assignment 4(a): pressure acceleration
+Maximum pressure acceleration [m/s^2]: 12256.6
+
+Assignment 4(a): viscosity acceleration
+Maximum viscosity acceleration [m/s^2]: 207.739
+Bottom-layer mean viscosity ax [m/s^2]: 185.945
+Top-layer mean viscosity ax [m/s^2]: -186.657
+
+Assignment 4(a): total acceleration
+Gravity [m/s^2]:     0     0 -9.81
+Maximum total acceleration [m/s^2]: 12344
+Gravity addition residual [m/s^2]: 7.42103e-13

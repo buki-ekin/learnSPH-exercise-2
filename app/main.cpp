@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <array>
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
@@ -29,14 +30,73 @@ void update_height(const std::vector<Eigen::Vector3d>& positions,
 	}
 }
 }
+// Compute effective volumes using boundary neighbors, including self.
+std::vector<double> compute_boundary_volumes(
+    std::vector<Eigen::Vector3d>& boundary_positions,
+    const double smoothing_length)
+{
+    std::vector<double> volumes(boundary_positions.size(), 0.0);
 
+    if (boundary_positions.empty()) {
+        return volumes;
+    }
+
+    const learnSPH::kernel::CubicSplineKernel kernel(smoothing_length);
+
+    CompactNSearch::NeighborhoodSearch search(
+        2.0 * smoothing_length);
+
+    const unsigned int boundary_set = search.add_point_set(
+        boundary_positions.front().data(),
+        static_cast<unsigned int>(boundary_positions.size()),
+        false, true, true);
+
+    search.find_neighbors();
+
+    const auto& neighbors = search.point_set(boundary_set);
+
+    for (unsigned int k = 0; k < boundary_positions.size(); ++k) {
+        // CompactNSearch excludes self, so add its contribution explicitly.
+        double kernel_sum = kernel.value(Eigen::Vector3d::Zero());
+
+        for (unsigned int n = 0;
+             n < neighbors.n_neighbors(boundary_set, k);
+             ++n) {
+            const unsigned int l =
+                neighbors.neighbor(boundary_set, k, n);
+
+            const Eigen::Vector3d separation =
+                boundary_positions[k] - boundary_positions[l];
+
+            kernel_sum += kernel.value(separation);
+        }
+
+        volumes[k] = 1.0 / kernel_sum;
+    }
+
+    return volumes;
+}
+
+// Convert effective boundary volumes to masses using fluid rest density.
+std::vector<double> compute_boundary_masses(
+    const std::vector<double>& boundary_volumes,
+    const double rest_density)
+{
+    std::vector<double> masses(boundary_volumes.size());
+
+    for (std::size_t k = 0; k < boundary_volumes.size(); ++k) {
+        masses[k] = rest_density * boundary_volumes[k];
+    }
+
+    return masses;
+}
 int main(int argc, char** argv)
 {
-    const std::filesystem::path output_folder =
-        argc > 1 ? argv[1] : "output/assignment5_freefall";
+            const std::filesystem::path output_folder =
+        argc > 1 ? argv[1] : "output/assignment5_floor_friction";
 
     std::filesystem::create_directories(output_folder);
-	// Assignment 5(a): fluid particle radius is 3 cm.
+		// Assignment 5(a): fluid particle radius is 3 cm.
 	constexpr double particle_radius = 0.03;		
 	constexpr double particle_distance = 2.0 * particle_radius;
 	// Rest density of water in kg/m^3.
@@ -56,9 +116,12 @@ int main(int argc, char** argv)
 
     // Assignment 5(a)(ii): fluid kinematic viscosity in m^2/s.
     constexpr double fluid_viscosity = 0.1;
+	 // Assignment 5(a)(vi): friction with the stationary boundary.
+    constexpr double boundary_viscosity = 1.0;
     constexpr double frame_rate = 30.0;
-    constexpr int number_of_frames = 91;
-		// Kernel smoothing length required by Exercise 2.
+    // Inspect the initial floor impact over one second.
+    constexpr int number_of_frames = 31;
+			// Kernel smoothing length required by Exercise 2.
     constexpr double smoothing_length = 1.2 * particle_distance;
 	constexpr double compact_support = 2.0 * smoothing_length;
 
@@ -106,8 +169,59 @@ for (int ix = 0; ; ++ix) {
 	CompactNSearch::NeighborhoodSearch search(compact_support);	const unsigned int point_set = search.add_point_set(
 		positions.front().data(), positions.size(), true, true, true);
     // Assignment 5(a)(iv): gravity acts in the negative z direction.
-    const Eigen::Vector3d gravity(0.0, 0.0, -9.81);
+    // Assignment 5(a)(v): sample a static floor below the fluid block.
+    // The initial gap avoids placing fluid directly against the boundary.
+    const double floor_z = -0.30;
+    const double boundary_spacing = 0.8 * particle_distance;
 
+    const std::vector<Eigen::Vector3d> boundary_vertices = {
+        Eigen::Vector3d(-2.0, -2.0, floor_z),
+        Eigen::Vector3d( 3.0, -2.0, floor_z),
+        Eigen::Vector3d( 3.0,  3.0, floor_z),
+        Eigen::Vector3d(-2.0,  3.0, floor_z)
+    };
+
+    const std::vector<std::array<int, 3>> boundary_triangles = {
+        {0, 1, 2},
+        {0, 2, 3}
+    };
+
+    std::vector<Eigen::Vector3d> boundary_positions;
+
+    learnSPH::sampling::triangle_mesh(
+        boundary_positions,
+        boundary_vertices,
+        boundary_triangles,
+        boundary_spacing);
+
+    if (boundary_positions.empty()) {
+        std::cerr << "Floor sampling produced no particles.\n";
+        return 1;
+    }
+
+    // Static boundary volumes and masses are computed only once.
+    const std::vector<double> boundary_volumes =
+        compute_boundary_volumes(
+            boundary_positions, smoothing_length);
+
+    const std::vector<double> boundary_masses =
+        compute_boundary_masses(
+            boundary_volumes, rest_density);
+
+    // Register the floor in the same search as the fluid.
+    const unsigned int wall_set = search.add_point_set(
+        boundary_positions.front().data(),
+        static_cast<unsigned int>(boundary_positions.size()),
+        false, true, true);
+
+    std::cout << "Floor particles: "
+              << boundary_positions.size() << '\n';
+    std::cout << "Floor height [m]: "
+              << floor_z << '\n';
+    std::cout << "Boundary spacing [m]: "
+              << boundary_spacing << '\n';
+
+    const Eigen::Vector3d gravity(0.0, 0.0, -9.81);
     // Allow approximately 44 metres of free fall over three seconds.
     // This is a diagnostic box, not a physical boundary.
     const Eigen::Vector3d box_min(-5.0, -5.0, -60.0);
@@ -184,12 +298,26 @@ for (int ix = 0; ; ++ix) {
   				 }
 
    				 // All fluid particles have the same mass.
-   			 densities[i] = particle_mass * kernel_sum;
-		}	
+                // Fluid contribution, including the self contribution.
+                densities[i] = particle_mass * kernel_sum;
 
-			// CFL chooses a safe time step.
-			const double cfl_step = learnSPH::cfl_time_step(
-				velocities, particle_radius, 0.5, 0.0001, 0.001);
+                // Assignment 5(a)(v): add the boundary density contribution.
+                for (unsigned int n = 0;
+                     n < fluid_neighbors.n_neighbors(wall_set, i);
+                     ++n) {
+                    const unsigned int k =
+                        fluid_neighbors.neighbor(wall_set, i, n);
+
+                    const Eigen::Vector3d separation =
+                        positions[i] - boundary_positions[k];
+
+                    densities[i] +=
+                        boundary_masses[k] * kernel.value(separation);
+                }		}	
+
+			            // Compare floor impact using a smaller maximum time step.
+            const double cfl_step = learnSPH::cfl_time_step(
+                velocities, particle_radius, 0.5, 0.00001, 0.00025);
 			const double time_step =
 				std::min(cfl_step, next_frame_time - simulation_time);
                        // Assignment 5(a)(i): compute pressure from current densities.
@@ -241,7 +369,40 @@ for (int ix = 0; ; ++ix) {
                         * (particle_mass / densities[j])
                         * geometric_factor
                         * (velocities[i] - velocities[j]);
-                } // End neighbor loop.
+                               } // End fluid neighbor loop.
+
+                // Assignment 5(a)(v): pressure interaction with the floor.
+                               // Boundary pressure and viscosity are active.
+                			for (unsigned int n = 0;
+                     			n < fluid_neighbors.n_neighbors(wall_set, i);
+                     ++n) { 
+                    const unsigned int k =
+                        fluid_neighbors.neighbor(wall_set, i, n);
+
+                    const Eigen::Vector3d separation =
+                        positions[i] - boundary_positions[k];
+
+                                       const Eigen::Vector3d gradient =
+                        kernel.gradient(separation);
+
+                    // Boundary pressure contribution.
+                    accelerations[i] -=
+                        boundary_masses[k]
+                        * pressure_factor_i
+                        * gradient;
+
+                    // Assignment 5(a)(vi): viscosity at a stationary wall.
+                    const double boundary_geometric_factor =
+                        separation.dot(gradient)
+                        / (separation.squaredNorm()
+                           + 0.01 * smoothing_length * smoothing_length);
+
+                    accelerations[i] +=
+                        2.0 * boundary_viscosity
+                        * boundary_volumes[k]
+                        * boundary_geometric_factor
+                        * velocities[i];
+                }
             } // End particle loop.
 
             learnSPH::semi_implicit_euler(
@@ -257,8 +418,32 @@ for (int ix = 0; ; ++ix) {
                     return 1;
                 }
             }
-			simulation_time += time_step;
-		}
+            // Detect penetration beneath the interior of the floor.
+            // Exclude an edge margin where particles can leave the floor.
+            for (std::size_t i = 0; i < positions.size(); ++i) {
+                const bool above_floor_interior =
+                    positions[i].x() > -2.0 + compact_support &&
+                    positions[i].x() <  3.0 - compact_support &&
+                    positions[i].y() > -2.0 + compact_support &&
+                    positions[i].y() <  3.0 - compact_support;
+
+                if (above_floor_interior &&
+                    positions[i].z() < floor_z - particle_radius) {
+                    std::cerr
+                        << "\nFloor penetration check\n"
+                        << "Time [s]: "
+                        << simulation_time + time_step << '\n'
+                        << "Particle index: " << i << '\n'
+                        << "Position [m]: "
+                        << positions[i].transpose() << '\n'
+                        << "Velocity [m/s]: "
+                        << velocities[i].transpose() << '\n';
+
+                    return 1;
+                }
+            }
+
+            simulation_time += time_step;		}
 
 		update_height(positions, heights);
 		learnSPH::write_particles_to_vtk(

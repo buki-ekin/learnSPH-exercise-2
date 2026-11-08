@@ -1,62 +1,45 @@
-# learnSPH - Exercise 1
+# learnSPH — Exercises 1 and 2
 
-This project completes Exercise Sheet 1 with a simple particle cube. It does not
-use Orion, Gemini or another mesh. The whole cube volume is filled with particles.
+Course framework extended with SPH density estimation, boundary handling, WCSPH forces, simulation experiments and Blender visualization. See [Exercise 2 progress](EXERCISE_2.md) for requirements, implementation and the actual commit history.
 
-## Build and test
+## Build and run
+
+Run commands from the repository root. Requires a C++17 compiler and CMake; dependencies are included under `extern/`. OpenMP is optional. Blender and FFmpeg are needed for visualization.
 
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j 6
+cmake --build build -j 4
 ./build/tests/learnSPH_tests --reporter compact
+./build/app/learnSPH_density
+./build/app/learnSPH_app
+./build/app/learnSPH_custom
 ```
 
-## Make the VTK frames
+- `learnSPH_density`: static density, boundary and force experiments.
+- `learnSPH_app`: Assignment 5(b), dam-break reference snapshots, 0–0.38 s at 50 FPS; output `output/assignment5_dambreak_reference`.
+- `learnSPH_custom`: Assignment 5(c), two opposing blocks, 24,000 initial particles, 3 s at 50 FPS; output `output/assignment5_custom`.
+- `learnSPH_benchmark` and `learnSPH_experiments`: earlier neighbor-search and integration experiments.
+
+## Videos and rendering
+
+Ready-to-view videos are in [showcase](showcase/). Generated VTK files, individual PNGs, Blender snapshots and build products are excluded from Git and can be regenerated.
+
+On macOS:
 
 ```bash
-cd build
-./app/learnSPH_app
-cd ..
+/Applications/Blender.app/Contents/MacOS/Blender --background --python blender/render_custom.py -- output/assignment5_custom output/assignment5_custom_blender
+ffmpeg -framerate 15 -start_number 0 -i output/assignment5_custom_blender/custom_%04d.png -frames:v 151 -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart output/assignment5_custom_blender/custom_scene_3d.mp4
 ```
 
-The program creates 91 files in `build/output/vtk`. The animation has 30 frames
-per second. Every file stores position, height and velocity data.
+On other platforms replace the Blender executable path. The custom renderer handles changing particle counts and uses a shared speed color scale. Playback is 15 FPS: 151 frames give approximately 10.07 seconds, showing 3 seconds of simulation in slow motion. `custom_final.blend` stores only the final static scene.
 
-## Run the experiments
+## Source layout
 
-```bash
-./build/app/learnSPH_benchmark
-./build/app/learnSPH_experiments
-```
+- `learnSPH/`: kernel, sampling, neighbor search, integration and VTK I/O.
+- `app/density.cpp`: Assignments 1–4 experiments.
+- `app/main.cpp`: final Assignment 5(b) configuration.
+- `app/custom_scene.cpp`: Assignment 5(c).
+- `blender/`: visualization scripts.
+- `tests/`: automated tests inherited and extended during the exercises.
 
-The benchmark compares the simple search with CompactNSearch. The experiment
-compares Euler with the exact result and shows tunneling with and without CFL.
-
-## Render with Blender
-
-```bash
-/Applications/Blender.app/Contents/MacOS/Blender \
-  --background \
-  --python blender/render_cube.py \
-  -- build/output/vtk build/output/blender
-
-ffmpeg -y -framerate 30 \
-  -i build/output/blender/frame_%04d.png \
-  -c:v libx264 -pix_fmt yuv420p \
-  build/output/blender/cube_particles.mp4
-```
-
-The Blender script makes small spheres, adds a floor, camera and lights, and
-colors the particles blue, purple, pink, orange and yellow using their position.
-
-## Important files
-
-- `learnSPH/kernel.*`: cubic spline kernel and gradient
-- `learnSPH/neighborhood.*`: simple neighbor search and particle grid
-- `learnSPH/simulation.*`: Euler, CFL and AABB removal
-- `learnSPH/io.*`: VTK writing
-- `tests/sample_tests.cpp`: automatic tests
-- `app/main.cpp`: falling particle cube
-- `app/benchmark.cpp`: neighbor-search timing
-- `app/experiments.cpp`: Euler and tunneling examples
-- `blender/render_cube.py`: PNG rendering
+Earlier Assignment 5(a) configurations are preserved in Git history rather than exposed as runtime switches. Existing comments may still mention earlier experiments; the executable configuration is authoritative. The optional moving-boundaries assignment is not implemented. Third-party components retain their own licenses in `extern/` and `tests/`.

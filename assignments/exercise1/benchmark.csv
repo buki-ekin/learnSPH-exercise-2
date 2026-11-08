@@ -1,0 +1,10 @@
+method,grid,particles,average_neighbors,milliseconds
+brute_force,10,1000,43.032,1.292
+brute_force,15,3375,47.171,13.454
+brute_force,20,8000,49.309,70.541
+compact_nsearch,10,1000,43.032,0.538
+compact_nsearch,15,3375,47.171,2.040
+compact_nsearch,20,8000,49.309,6.306
+compact_nsearch,30,27000,51.493,24.179
+compact_nsearch,40,64000,52.602,52.851
+compact_nsearch,50,125000,53.274,102.040

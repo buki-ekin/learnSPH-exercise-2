@@ -1,0 +1,184 @@
+[
+  {
+    "scene": "assignment5_collision",
+    "frames": 91,
+    "source_fps": 30,
+    "simulation_duration": 3.0,
+    "video": "showcase/all_scenes/assignment5_collision.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "6.066667",
+      "nb_frames": "91"
+    }
+  },
+  {
+    "scene": "assignment5_custom",
+    "frames": 151,
+    "source_fps": 50,
+    "simulation_duration": 3.0,
+    "video": "showcase/all_scenes/assignment5_custom.mp4",
+    "video_details": {
+      "width": 1024,
+      "height": 1024,
+      "duration": "10.066667",
+      "nb_frames": "151"
+    }
+  },
+  {
+    "scene": "assignment5_dambreak",
+    "frames": 31,
+    "source_fps": 30,
+    "simulation_duration": 1.0,
+    "video": "showcase/all_scenes/assignment5_dambreak.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "4.000000",
+      "nb_frames": "31"
+    }
+  },
+  {
+    "scene": "assignment5_dambreak_dt005",
+    "frames": 13,
+    "source_fps": 30,
+    "simulation_duration": 0.4,
+    "video": "showcase/all_scenes/assignment5_dambreak_dt005.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "4.000000",
+      "nb_frames": "13"
+    }
+  },
+  {
+    "scene": "assignment5_dambreak_nominal_mass",
+    "frames": 13,
+    "source_fps": 30,
+    "simulation_duration": 0.4,
+    "video": "showcase/all_scenes/assignment5_dambreak_nominal_mass.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "4.000000",
+      "nb_frames": "13"
+    }
+  },
+  {
+    "scene": "assignment5_dambreak_reference",
+    "frames": 20,
+    "source_fps": 50,
+    "simulation_duration": 0.38,
+    "video": "showcase/all_scenes/assignment5_dambreak_reference.mp4",
+    "video_details": {
+      "width": 1024,
+      "height": 1024,
+      "duration": "4.000000",
+      "nb_frames": "120"
+    }
+  },
+  {
+    "scene": "assignment5_floor",
+    "frames": 35,
+    "source_fps": 30,
+    "simulation_duration": 1.1333333333333333,
+    "video": "showcase/all_scenes/assignment5_floor.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "4.000000",
+      "nb_frames": "35"
+    }
+  },
+  {
+    "scene": "assignment5_floor_1s",
+    "frames": 31,
+    "source_fps": 30,
+    "simulation_duration": 1.0,
+    "video": "showcase/all_scenes/assignment5_floor_1s.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "4.000000",
+      "nb_frames": "31"
+    }
+  },
+  {
+    "scene": "assignment5_floor_1s_dt025",
+    "frames": 31,
+    "source_fps": 30,
+    "simulation_duration": 1.0,
+    "video": "showcase/all_scenes/assignment5_floor_1s_dt025.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "4.000000",
+      "nb_frames": "31"
+    }
+  },
+  {
+    "scene": "assignment5_floor_friction",
+    "frames": 31,
+    "source_fps": 30,
+    "simulation_duration": 1.0,
+    "video": "showcase/all_scenes/assignment5_floor_friction.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "4.000000",
+      "nb_frames": "31"
+    }
+  },
+  {
+    "scene": "assignment5_freefall",
+    "frames": 91,
+    "source_fps": 30,
+    "simulation_duration": 3.0,
+    "video": "showcase/all_scenes/assignment5_freefall.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "6.066667",
+      "nb_frames": "91"
+    }
+  },
+  {
+    "scene": "assignment5_pressure",
+    "frames": 91,
+    "source_fps": 30,
+    "simulation_duration": 3.0,
+    "video": "showcase/all_scenes/assignment5_pressure.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "6.066667",
+      "nb_frames": "91"
+    }
+  },
+  {
+    "scene": "assignment5_viscosity",
+    "frames": 91,
+    "source_fps": 30,
+    "simulation_duration": 3.0,
+    "video": "showcase/all_scenes/assignment5_viscosity.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "6.066667",
+      "nb_frames": "91"
+    }
+  },
+  {
+    "scene": "assignment5_zero",
+    "frames": 91,
+    "source_fps": 30,
+    "simulation_duration": 3.0,
+    "video": "showcase/all_scenes/assignment5_zero.mp4",
+    "video_details": {
+      "width": 720,
+      "height": 720,
+      "duration": "6.066667",
+      "nb_frames": "91"
+    }
+  }
+]

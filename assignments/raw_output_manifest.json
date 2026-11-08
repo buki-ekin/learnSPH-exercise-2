@@ -1,0 +1,152 @@
+[
+  {
+    "folder": "output/assignment3",
+    "asset": "assignment3.zip",
+    "bytes": 114833,
+    "sha256": "40e9f3b00977485dba6a6aec8490fbe93664cdf01daf9f3a66502e80e16db8a7"
+  },
+  {
+    "folder": "output/assignment3_blender",
+    "asset": "assignment3_blender.zip",
+    "bytes": 6504770,
+    "sha256": "758fef2309d1b108c3e77915da25b75b584ff9604741fb55c3ed265a4d59f0b8"
+  },
+  {
+    "folder": "output/assignment5_collision",
+    "asset": "assignment5_collision.zip",
+    "bytes": 21197883,
+    "sha256": "698b9eba7e725f88320ea0a1d64e877aa55ce3cbcf726a2e7bffa6d4d1c80b96"
+  },
+  {
+    "folder": "output/assignment5_collision_blender",
+    "asset": "assignment5_collision_blender.zip",
+    "bytes": 3978247,
+    "sha256": "cabfab3caedafe9891a6979aa873077e0625fe6569437ce3e2a6a1253e8ba1cb"
+  },
+  {
+    "folder": "output/assignment5_custom",
+    "asset": "assignment5_custom.zip",
+    "bytes": 198083627,
+    "sha256": "e7bebc8ee16dd91275113675e38af243fd828a8b568a8627e74cb97b7d20979d"
+  },
+  {
+    "folder": "output/assignment5_custom_blender",
+    "asset": "assignment5_custom_blender.zip",
+    "bytes": 97635471,
+    "sha256": "81a77894e232e1422f1e2a3118542aa3db6d76350fd8e0832e7cd1e71505b996"
+  },
+  {
+    "folder": "output/assignment5_dambreak",
+    "asset": "assignment5_dambreak.zip",
+    "bytes": 30129032,
+    "sha256": "dd6e7959d5cfb6c4a05fd554bff4c204e06e2a0d89983abe36e31b56f1990f3a"
+  },
+  {
+    "folder": "output/assignment5_dambreak_diagnostic",
+    "asset": "assignment5_dambreak_diagnostic.zip",
+    "bytes": 5147319,
+    "sha256": "878a591f4899c0be893801c5f5daf83fc084173a73f809f582e3842941405195"
+  },
+  {
+    "folder": "output/assignment5_dambreak_dt005",
+    "asset": "assignment5_dambreak_dt005.zip",
+    "bytes": 11407525,
+    "sha256": "7eb7a9f599473d150ff5b3a81f73eff073ecccd761e934fb9405571712851085"
+  },
+  {
+    "folder": "output/assignment5_dambreak_movie",
+    "asset": "assignment5_dambreak_movie.zip",
+    "bytes": 18676573,
+    "sha256": "e7a8dc054d5816f5293e63e16df66e53fe6dfab27a3037072be9d121c513790a"
+  },
+  {
+    "folder": "output/assignment5_dambreak_nominal_mass",
+    "asset": "assignment5_dambreak_nominal_mass.zip",
+    "bytes": 12428112,
+    "sha256": "8722cc184792fb18c1e7ce0b0c67256542149d749fe6ee87e27eb6c7bbed5870"
+  },
+  {
+    "folder": "output/assignment5_dambreak_reference",
+    "asset": "assignment5_dambreak_reference.zip",
+    "bytes": 19555659,
+    "sha256": "1f7d7836dbf67df380137ff48399b3e73b8c8072507f11e22faf43c8c8ac85e3"
+  },
+  {
+    "folder": "output/assignment5_dambreak_reference_blender",
+    "asset": "assignment5_dambreak_reference_blender.zip",
+    "bytes": 2454690,
+    "sha256": "68cbbae5fd45ff8b586cbd4c819bbddec829fb7ab139bed47e6f425aa85fa326"
+  },
+  {
+    "folder": "output/assignment5_floor",
+    "asset": "assignment5_floor.zip",
+    "bytes": 6442165,
+    "sha256": "e26455b2859c74b7f8b4401722ef1e99db5a70238562ab81464b3ddb2ddbf04b"
+  },
+  {
+    "folder": "output/assignment5_floor_1s",
+    "asset": "assignment5_floor_1s.zip",
+    "bytes": 5519613,
+    "sha256": "90cdf0c8110e0d1579e5a4931713273f1b914ebefc1fd0cac7e1d473e9527e9d"
+  },
+  {
+    "folder": "output/assignment5_floor_1s_blender",
+    "asset": "assignment5_floor_1s_blender.zip",
+    "bytes": 4263559,
+    "sha256": "ccab7041e955a73822ce450cb7cd1bbd40b9fa1055cb1be1d096c545ee68f5e1"
+  },
+  {
+    "folder": "output/assignment5_floor_1s_dt025",
+    "asset": "assignment5_floor_1s_dt025.zip",
+    "bytes": 5572926,
+    "sha256": "cacf78cc8560769ed5312fb12619d3a3ec5420dd340e41279d2ff04b7c9e4ccd"
+  },
+  {
+    "folder": "output/assignment5_floor_1s_dt025_blender",
+    "asset": "assignment5_floor_1s_dt025_blender.zip",
+    "bytes": 4264178,
+    "sha256": "4c90a601a33b595aadfdf147eb83daf247c2b4d4d767d9571b10236d9f4c09e9"
+  },
+  {
+    "folder": "output/assignment5_floor_friction",
+    "asset": "assignment5_floor_friction.zip",
+    "bytes": 5615630,
+    "sha256": "6f5f202af66bcdb2847985f38ed79bda451fe405a0a94d8551c02a701e8e41fc"
+  },
+  {
+    "folder": "output/assignment5_floor_friction_blender",
+    "asset": "assignment5_floor_friction_blender.zip",
+    "bytes": 3721642,
+    "sha256": "daf128f087c772adb3a30e9c2fbcf739f7d3a7bb02c47702758d598c0b6ff867"
+  },
+  {
+    "folder": "output/assignment5_freefall",
+    "asset": "assignment5_freefall.zip",
+    "bytes": 1963176,
+    "sha256": "6cc57ad8eb48539ca31602ef9216f8b78b0945e12b56c44e3903a2e97c6ee0da"
+  },
+  {
+    "folder": "output/assignment5_pressure",
+    "asset": "assignment5_pressure.zip",
+    "bytes": 1920941,
+    "sha256": "8becae056d54f8373e526ff87e96e1826dfe4276b6be3fb55c075c0fa496c521"
+  },
+  {
+    "folder": "output/assignment5_viscosity",
+    "asset": "assignment5_viscosity.zip",
+    "bytes": 1921123,
+    "sha256": "0c73deefd01595bdee8c32339d80dbd5b132b5bca09f36ab3aa4230ab6fba173"
+  },
+  {
+    "folder": "output/assignment5_zero",
+    "asset": "assignment5_zero.zip",
+    "bytes": 1920213,
+    "sha256": "69d2d7dc76dc1b2c3814eaebfb5cf44b854979d86a6897e5063305c028e5dbaa"
+  },
+  {
+    "folder": "results",
+    "asset": "results.zip",
+    "bytes": 2729502,
+    "sha256": "dad7b5d1e76dfc279f9afa45f3dfdb2fe50fea5bd200e6ff722b0c1f2a06b7ca"
+  }
+]

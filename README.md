@@ -1,6 +1,8 @@
 # learnSPH — Exercises 1 and 2
 
-Course framework extended with SPH density estimation, boundary handling, WCSPH forces, simulation experiments and Blender visualization. See [Exercise 2 progress](EXERCISE_2.md) for requirements, implementation and the actual commit history.
+Course framework extended with SPH density estimation, boundary handling, WCSPH forces, simulation experiments and Blender visualization. See the [complete assignment folders](assignments/README.md), [all scene videos](showcase/all_scenes/), and [downloadable raw-output archives](https://github.com/buki-ekin/learnSPH-exercise-2/releases/tag/complete-exercise-archive-v1).
+
+See [Exercise 2 progress](EXERCISE_2.md) for requirements, implementation and the actual commit history.
 
 ## Build and run
 
@@ -22,7 +24,7 @@ cmake --build build -j 4
 
 ## Videos and rendering
 
-Ready-to-view videos are in [showcase](showcase/). Generated VTK files, individual PNGs, Blender snapshots and build products are excluded from Git and can be regenerated.
+Ready-to-view videos are in [showcase](showcase/). Original VTK files, individual PNGs and Blender snapshots are preserved as ZIP assets in the complete-output release. Build products remain excluded from Git.
 
 On macOS:
 

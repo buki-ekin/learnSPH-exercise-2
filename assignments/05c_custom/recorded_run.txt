@@ -1,0 +1,799 @@
+Initial fluid particles: 24000
+Boundary particles: 44315
+Floor height [m]: -0.01
+Boundary spacing [m]: 0.008
+Density/pressure check at t=0.02  max_rho=999.802  max_pressure=0
+Fastest particle position [m]:    0.075 0.255448 0.193033
+Fastest particle velocity [m/s]: 2.7205e-11   0.524967    -0.1962
+t=0.02  max_z=0.393475  max_speed=0.560432  above_rim=0
+Density/pressure check at t=0.04  max_rho=1023.21  max_pressure=23210.6
+Fastest particle position [m]:   0.146633   0.530443 -0.0021946
+Fastest particle velocity [m/s]: 0.127435 -1.42828 0.208577
+t=0.04  max_z=0.388062  max_speed=1.44904  above_rim=0
+Density/pressure check at t=0.06  max_rho=1010.23  max_pressure=10230.7
+Fastest particle position [m]: 0.000243745    0.500205  -0.0013898
+Fastest particle velocity [m/s]:   -0.13476   -1.58994 -0.0784217
+t=0.06  max_z=0.378698  max_speed=1.59757  above_rim=0
+Density/pressure check at t=0.08  max_rho=1008.56  max_pressure=8559.64
+Fastest particle position [m]:  0.00304779    0.486571 -0.00061362
+Fastest particle velocity [m/s]: 0.0781346  -1.82688 -0.106439
+t=0.08  max_z=0.365386  max_speed=1.83164  above_rim=0
+Density/pressure check at t=0.1  max_rho=1008.18  max_pressure=8175.72
+Fastest particle position [m]: 0.000713039    0.428253 0.000159988
+Fastest particle velocity [m/s]: 0.0610419  -2.10453 0.0402581
+t=0.1  max_z=0.348128  max_speed=2.1058  above_rim=0
+Density/pressure check at t=0.12  max_rho=1034.98  max_pressure=34984.4
+Fastest particle position [m]:   0.06445  0.405442 0.0229699
+Fastest particle velocity [m/s]: 0.0112741   0.97358   3.75512
+t=0.12  max_z=0.326927  max_speed=3.8793  above_rim=0
+Density/pressure check at t=0.14  max_rho=1060.24  max_pressure=60244.3
+Fastest particle position [m]:  0.109783  0.398658 0.0774998
+Fastest particle velocity [m/s]:  0.50213 0.149144   4.6683
+t=0.14  max_z=0.301785  max_speed=4.6976  above_rim=0
+Density/pressure check at t=0.16  max_rho=1039.75  max_pressure=39752.1
+Fastest particle position [m]: 0.144237 0.403848 0.128322
+Fastest particle velocity [m/s]: -0.244815  -0.58386   5.59393
+t=0.16  max_z=0.272705  max_speed=5.62964  above_rim=0
+Density/pressure check at t=0.18  max_rho=1039.71  max_pressure=39714.2
+Fastest particle position [m]: 0.0881131  0.403619  0.173674
+Fastest particle velocity [m/s]: 0.0748152  0.254247   6.33509
+t=0.18  max_z=0.289783  max_speed=6.34063  above_rim=0
+Density/pressure check at t=0.2  max_rho=1039.29  max_pressure=39287.8
+Fastest particle position [m]: -0.00362967    0.405847    0.276805
+Fastest particle velocity [m/s]: -0.391977  0.464835   6.16991
+t=0.2  max_z=0.371697  max_speed=6.1998  above_rim=0
+Density/pressure check at t=0.22  max_rho=1021.4  max_pressure=21400.3
+Fastest particle position [m]: -0.00165085    0.415056    0.396227
+Fastest particle velocity [m/s]: 0.122619 0.455633  5.83972
+t=0.22  max_z=0.449687  max_speed=5.85875  above_rim=0
+Density/pressure check at t=0.24  max_rho=1017.16  max_pressure=17164.3
+Fastest particle position [m]: 0.000771244    0.424324    0.510658
+Fastest particle velocity [m/s]: 0.107884 0.463483  5.57037
+t=0.24  max_z=0.535592  max_speed=5.59066  above_rim=0
+Density/pressure check at t=0.26  max_rho=1011.59  max_pressure=11588.7
+Fastest particle position [m]: 0.00516161   0.437625   0.598743
+Fastest particle velocity [m/s]: 0.137625 0.543752  5.29601
+t=0.26  max_z=0.630331  max_speed=5.32562  above_rim=0
+Density/pressure check at t=0.28  max_rho=1008.77  max_pressure=8772.48
+Fastest particle position [m]: 0.0253793  0.423999  0.674639
+Fastest particle velocity [m/s]: 0.242608 0.159296  4.90689
+t=0.28  max_z=0.723109  max_speed=4.91546  above_rim=0
+Density/pressure check at t=0.3  max_rho=1005.42  max_pressure=5420.24
+Fastest particle position [m]: 0.0301534  0.427099  0.770583
+Fastest particle velocity [m/s]: 0.229209 0.153183  4.67411
+t=0.3  max_z=0.814287  max_speed=4.68223  above_rim=0
+Density/pressure check at t=0.32  max_rho=1005.02  max_pressure=5020.74
+Fastest particle position [m]: 0.0113055  0.350508  0.900335
+Fastest particle velocity [m/s]:  0.129664 -0.320382   4.45706
+t=0.32  max_z=0.901541  max_speed=4.47044  above_rim=0
+Density/pressure check at t=0.34  max_rho=1004.24  max_pressure=4238.05
+Fastest particle position [m]: 0.0138987    0.3441   0.98751
+Fastest particle velocity [m/s]:  0.129664 -0.320382   4.26086
+t=0.34  max_z=0.98751  max_speed=4.27485  above_rim=0
+Density/pressure check at t=0.36  max_rho=1004.1  max_pressure=4098.24
+Fastest particle position [m]: 0.016492 0.337692  1.07076
+Fastest particle velocity [m/s]:  0.129664 -0.320382   4.06466
+t=0.36  max_z=1.07076  max_speed=4.07932  above_rim=153
+Density/pressure check at t=0.38  max_rho=1004.01  max_pressure=4011.39
+Fastest particle position [m]: 0.0190853  0.331285   1.15009
+Fastest particle velocity [m/s]:  0.129664 -0.320382   3.86846
+t=0.38  max_z=1.15009  max_speed=3.88387  above_rim=400
+Density/pressure check at t=0.4  max_rho=1004.19  max_pressure=4187.94
+Fastest particle position [m]: 0.0216786  0.324877   1.22549
+Fastest particle velocity [m/s]:  0.129664 -0.320382   3.67226
+t=0.4  max_z=1.22549  max_speed=3.68849  above_rim=506
+Density/pressure check at t=0.42  max_rho=1004.39  max_pressure=4389.42
+Fastest particle position [m]: 0.0242719   0.31847   1.29697
+Fastest particle velocity [m/s]:  0.129664 -0.320382   3.47606
+t=0.42  max_z=1.29697  max_speed=3.4932  above_rim=548
+Density/pressure check at t=0.44  max_rho=1004.47  max_pressure=4470.54
+Fastest particle position [m]: 0.0268652  0.312062   1.36452
+Fastest particle velocity [m/s]:  0.129664 -0.320382   3.27986
+t=0.44  max_z=1.36452  max_speed=3.29802  above_rim=568
+Density/pressure check at t=0.46  max_rho=1004.58  max_pressure=4577.7
+Fastest particle position [m]: 0.0294584  0.305654   1.42815
+Fastest particle velocity [m/s]:  0.129664 -0.320382   3.08366
+t=0.46  max_z=1.42815  max_speed=3.10297  above_rim=586
+Density/pressure check at t=0.48  max_rho=1004.92  max_pressure=4921.21
+Fastest particle position [m]: 0.0320517  0.299247   1.48786
+Fastest particle velocity [m/s]:  0.129664 -0.320382   2.88746
+t=0.48  max_z=1.48786  max_speed=2.90807  above_rim=594
+Density/pressure check at t=0.5  max_rho=1005.08  max_pressure=5084.18
+Fastest particle position [m]: 0.034645 0.292839  1.54364
+Fastest particle velocity [m/s]:  0.129664 -0.320382   2.69126
+t=0.5  max_z=1.54364  max_speed=2.71336  above_rim=605
+Density/pressure check at t=0.52  max_rho=1005.1  max_pressure=5097.79
+Fastest particle position [m]: 0.0372383  0.286431    1.5955
+Fastest particle velocity [m/s]:  0.129664 -0.320382   2.49506
+t=0.52  max_z=1.5955  max_speed=2.51888  above_rim=609
+Density/pressure check at t=0.54  max_rho=1005.27  max_pressure=5271.66
+Fastest particle position [m]: 0.0398316  0.280024   1.64343
+Fastest particle velocity [m/s]:  0.129664 -0.320382   2.29886
+t=0.54  max_z=1.64343  max_speed=2.32469  above_rim=613
+Density/pressure check at t=0.56  max_rho=1028.55  max_pressure=28546.4
+Fastest particle position [m]: 0.159928 0.666437  1.63968
+Fastest particle velocity [m/s]: 0.0382034    0.7113    2.0164
+t=0.56  max_z=1.68744  max_speed=2.13853  above_rim=613
+Density/pressure check at t=0.58  max_rho=1008.16  max_pressure=8155.15
+Fastest particle position [m]: 0.0927521  0.394386  0.134126
+Fastest particle velocity [m/s]: -0.00547397  -0.0652956     -1.9694
+t=0.58  max_z=1.72753  max_speed=1.97049  above_rim=613
+Density/pressure check at t=0.6  max_rho=1010  max_pressure=9997.92
+Fastest particle position [m]: 0.069025 0.357031 0.116429
+Fastest particle velocity [m/s]: -0.00631076  -0.0653246    -2.13431
+t=0.6  max_z=1.76369  max_speed=2.13532  above_rim=613
+Density/pressure check at t=0.62  max_rho=1015.77  max_pressure=15766.9
+Fastest particle position [m]: 0.0533809  0.359984 0.0998847
+Fastest particle velocity [m/s]: -0.0137305 -0.0466847   -2.25242
+t=0.62  max_z=1.79593  max_speed=2.25295  above_rim=613
+Density/pressure check at t=0.64  max_rho=1018.53  max_pressure=18527.6
+Fastest particle position [m]: 0.0490407  0.372949 0.0946471
+Fastest particle velocity [m/s]: -0.00823774  -0.0685647    -2.38541
+t=0.64  max_z=1.82424  max_speed=2.38641  above_rim=612
+Density/pressure check at t=0.66  max_rho=1012.57  max_pressure=12573.1
+Fastest particle position [m]:   0.14132  0.362541 0.0818208
+Fastest particle velocity [m/s]: 0.00753921 -0.0936862   -2.49921
+t=0.66  max_z=1.84863  max_speed=2.50098  above_rim=612
+Density/pressure check at t=0.68  max_rho=1012.67  max_pressure=12665.3
+Fastest particle position [m]: 0.0914732   0.36745 0.0790865
+Fastest particle velocity [m/s]:  0.0179522 -0.0720222    -2.6307
+t=0.68  max_z=1.8691  max_speed=2.63175  above_rim=612
+Density/pressure check at t=0.7  max_rho=1041.48  max_pressure=41478.7
+Fastest particle position [m]: 0.0594933  0.372331 0.0744532
+Fastest particle velocity [m/s]: -0.00743238  -0.0434136    -2.70895
+t=0.7  max_z=1.88564  max_speed=2.70931  above_rim=607
+Removed particles: 1  total removed: 1  remaining: 23999  t=0.71865
+Density/pressure check at t=0.72  max_rho=1029.93  max_pressure=29927.9
+Fastest particle position [m]: 0.116393 0.396591 0.116699
+Fastest particle velocity [m/s]: 0.0658693 0.0116408  -2.72041
+t=0.72  max_z=1.89826  max_speed=2.72123  above_rim=607
+Density/pressure check at t=0.74  max_rho=1023.93  max_pressure=23930.3
+Fastest particle position [m]: 0.139376 0.366743 0.100541
+Fastest particle velocity [m/s]: 0.000480433  -0.0456016    -2.81385
+t=0.74  max_z=1.90695  max_speed=2.81421  above_rim=607
+Density/pressure check at t=0.76  max_rho=1023.69  max_pressure=23688.4
+Fastest particle position [m]: 0.00476126   0.418075   0.124728
+Fastest particle velocity [m/s]: -0.0134764  0.0308428   -2.86051
+t=0.76  max_z=1.91172  max_speed=2.86071  above_rim=597
+Removed particles: 1  total removed: 2  remaining: 23998  t=0.7731
+Density/pressure check at t=0.78  max_rho=1040.59  max_pressure=40592
+Fastest particle position [m]: 0.00626208   0.413718   0.132238
+Fastest particle velocity [m/s]: -0.00111046   0.0301604    -2.93624
+t=0.78  max_z=1.91257  max_speed=2.9364  above_rim=582
+Removed particles: 1  total removed: 3  remaining: 23997  t=0.78495
+Removed particles: 1  total removed: 4  remaining: 23996  t=0.7851
+Removed particles: 1  total removed: 5  remaining: 23995  t=0.787
+Removed particles: 1  total removed: 6  remaining: 23994  t=0.7902
+Removed particles: 1  total removed: 7  remaining: 23993  t=0.7936
+Density/pressure check at t=0.8  max_rho=1067.79  max_pressure=67787
+Fastest particle position [m]: 0.0318405  0.777262  0.155689
+Fastest particle velocity [m/s]: -0.637465   3.18522 -0.935004
+t=0.8  max_z=1.90949  max_speed=3.38027  above_rim=576
+Removed particles: 1  total removed: 8  remaining: 23992  t=0.81025
+Removed particles: 1  total removed: 9  remaining: 23991  t=0.8103
+Removed particles: 1  total removed: 10  remaining: 23990  t=0.81125
+Removed particles: 1  total removed: 11  remaining: 23989  t=0.8133
+Removed particles: 1  total removed: 12  remaining: 23988  t=0.81635
+Density/pressure check at t=0.82  max_rho=1040.95  max_pressure=40946.6
+Fastest particle position [m]:    0.128295 0.000660181    0.169223
+Fastest particle velocity [m/s]: -3.46222 0.270727  2.82781
+t=0.82  max_z=1.90249  max_speed=4.47848  above_rim=574
+Density/pressure check at t=0.84  max_rho=1089.53  max_pressure=89531.8
+Fastest particle position [m]: 0.0597563   0.80508  0.227028
+Fastest particle velocity [m/s]:    -3.32855 -0.00974322     2.27922
+t=0.84  max_z=1.89157  max_speed=4.03413  above_rim=573
+Removed particles: 1  total removed: 13  remaining: 23987  t=0.85775
+Density/pressure check at t=0.86  max_rho=1014.25  max_pressure=14249.4
+Fastest particle position [m]: 0.00655308  0.0134892   0.274544
+Fastest particle velocity [m/s]: -2.86565 0.315759  2.40181
+t=0.86  max_z=1.87672  max_speed=3.75238  above_rim=557
+Removed particles: 1  total removed: 14  remaining: 23986  t=0.8636
+Removed particles: 1  total removed: 15  remaining: 23985  t=0.86815
+Removed particles: 1  total removed: 16  remaining: 23984  t=0.86985
+Removed particles: 1  total removed: 17  remaining: 23983  t=0.87005
+Removed particles: 1  total removed: 18  remaining: 23982  t=0.8711
+Removed particles: 1  total removed: 19  remaining: 23981  t=0.87235
+Density/pressure check at t=0.88  max_rho=1016.82  max_pressure=16820.9
+Fastest particle position [m]: 0.126935 0.505441 0.219575
+Fastest particle velocity [m/s]: 0.0422922 -0.941042    -3.478
+t=0.88  max_z=1.85794  max_speed=3.60331  above_rim=546
+Removed particles: 1  total removed: 20  remaining: 23980  t=0.8848
+Removed particles: 1  total removed: 21  remaining: 23979  t=0.8859
+Removed particles: 1  total removed: 22  remaining: 23978  t=0.8876
+Removed particles: 1  total removed: 23  remaining: 23977  t=0.8882
+Removed particles: 1  total removed: 24  remaining: 23976  t=0.89035
+Removed particles: 1  total removed: 25  remaining: 23975  t=0.89595
+Removed particles: 1  total removed: 26  remaining: 23974  t=0.8974
+Density/pressure check at t=0.9  max_rho=1056.58  max_pressure=56577.3
+Fastest particle position [m]:  0.12504 0.604491 0.280456
+Fastest particle velocity [m/s]:  0.127108 -0.367209  -3.42643
+t=0.9  max_z=1.83524  max_speed=3.4484  above_rim=541
+Removed particles: 1  total removed: 27  remaining: 23973  t=0.90945
+Removed particles: 1  total removed: 28  remaining: 23972  t=0.915
+Removed particles: 1  total removed: 29  remaining: 23971  t=0.91565
+Density/pressure check at t=0.92  max_rho=1009.98  max_pressure=9983.87
+Fastest particle position [m]: 0.127576 0.597192 0.209966
+Fastest particle velocity [m/s]:  0.126787 -0.364554  -3.62227
+t=0.92  max_z=1.80862  max_speed=3.64277  above_rim=527
+Removed particles: 1  total removed: 30  remaining: 23970  t=0.9228
+Removed particles: 1  total removed: 31  remaining: 23969  t=0.9283
+Removed particles: 1  total removed: 32  remaining: 23968  t=0.9287
+Removed particles: 1  total removed: 33  remaining: 23967  t=0.9297
+Removed particles: 1  total removed: 34  remaining: 23966  t=0.9315
+Removed particles: 1  total removed: 35  remaining: 23965  t=0.9322
+Removed particles: 1  total removed: 36  remaining: 23964  t=0.9333
+Removed particles: 1  total removed: 37  remaining: 23963  t=0.93885
+Removed particles: 1  total removed: 38  remaining: 23962  t=0.9398
+Density/pressure check at t=0.94  max_rho=1005.8  max_pressure=5802.42
+Fastest particle position [m]: -0.00174246    0.295982     0.23962
+Fastest particle velocity [m/s]:  0.216518 -0.172661  -3.65746
+t=0.94  max_z=1.77808  max_speed=3.66793  above_rim=505
+Removed particles: 1  total removed: 39  remaining: 23961  t=0.94005
+Removed particles: 1  total removed: 40  remaining: 23960  t=0.9401
+Removed particles: 1  total removed: 41  remaining: 23959  t=0.9411
+Removed particles: 1  total removed: 42  remaining: 23958  t=0.9413
+Removed particles: 1  total removed: 43  remaining: 23957  t=0.9418
+Removed particles: 1  total removed: 44  remaining: 23956  t=0.9422
+Removed particles: 1  total removed: 45  remaining: 23955  t=0.9424
+Removed particles: 1  total removed: 46  remaining: 23954  t=0.94265
+Removed particles: 1  total removed: 47  remaining: 23953  t=0.9432
+Removed particles: 1  total removed: 48  remaining: 23952  t=0.94355
+Removed particles: 1  total removed: 49  remaining: 23951  t=0.94365
+Removed particles: 1  total removed: 50  remaining: 23950  t=0.9445
+Removed particles: 1  total removed: 51  remaining: 23949  t=0.9446
+Removed particles: 1  total removed: 52  remaining: 23948  t=0.94495
+Density/pressure check at t=0.96  max_rho=1022.42  max_pressure=22418.5
+Fastest particle position [m]: 0.122296 0.684184 0.313957
+Fastest particle velocity [m/s]: -0.0705528  -0.616406   -3.72826
+t=0.96  max_z=1.74361  max_speed=3.77953  above_rim=486
+Removed particles: 1  total removed: 53  remaining: 23947  t=0.96185
+Removed particles: 1  total removed: 54  remaining: 23946  t=0.9651
+Removed particles: 1  total removed: 55  remaining: 23945  t=0.96545
+Removed particles: 1  total removed: 56  remaining: 23944  t=0.96595
+Removed particles: 1  total removed: 57  remaining: 23943  t=0.966
+Removed particles: 1  total removed: 58  remaining: 23942  t=0.9661
+Removed particles: 1  total removed: 59  remaining: 23941  t=0.9669
+Removed particles: 1  total removed: 60  remaining: 23940  t=0.96715
+Removed particles: 1  total removed: 61  remaining: 23939  t=0.9675
+Removed particles: 1  total removed: 62  remaining: 23938  t=0.9676
+Removed particles: 1  total removed: 63  remaining: 23937  t=0.9684
+Removed particles: 1  total removed: 64  remaining: 23936  t=0.9691
+Removed particles: 1  total removed: 65  remaining: 23935  t=0.96945
+Removed particles: 2  total removed: 67  remaining: 23933  t=0.9695
+Removed particles: 1  total removed: 68  remaining: 23932  t=0.9699
+Removed particles: 1  total removed: 69  remaining: 23931  t=0.97015
+Removed particles: 1  total removed: 70  remaining: 23930  t=0.9705
+Removed particles: 1  total removed: 71  remaining: 23929  t=0.97055
+Removed particles: 1  total removed: 72  remaining: 23928  t=0.97075
+Removed particles: 1  total removed: 73  remaining: 23927  t=0.971
+Removed particles: 1  total removed: 74  remaining: 23926  t=0.9712
+Removed particles: 1  total removed: 75  remaining: 23925  t=0.97125
+Removed particles: 1  total removed: 76  remaining: 23924  t=0.97135
+Removed particles: 1  total removed: 77  remaining: 23923  t=0.9715
+Removed particles: 1  total removed: 78  remaining: 23922  t=0.9724
+Removed particles: 1  total removed: 79  remaining: 23921  t=0.9726
+Removed particles: 1  total removed: 80  remaining: 23920  t=0.97305
+Removed particles: 1  total removed: 81  remaining: 23919  t=0.97325
+Removed particles: 1  total removed: 82  remaining: 23918  t=0.9738
+Removed particles: 1  total removed: 83  remaining: 23917  t=0.9739
+Removed particles: 1  total removed: 84  remaining: 23916  t=0.97485
+Removed particles: 1  total removed: 85  remaining: 23915  t=0.9758
+Removed particles: 1  total removed: 86  remaining: 23914  t=0.97775
+Removed particles: 1  total removed: 87  remaining: 23913  t=0.9787
+Removed particles: 1  total removed: 88  remaining: 23912  t=0.97985
+Density/pressure check at t=0.98  max_rho=1016.7  max_pressure=16699.1
+Fastest particle position [m]: 0.120885 0.671856 0.237425
+Fastest particle velocity [m/s]: -0.0705528  -0.616406   -3.92446
+t=0.98  max_z=1.70521  max_speed=3.9732  above_rim=433
+Removed particles: 1  total removed: 89  remaining: 23911  t=0.9818
+Removed particles: 1  total removed: 90  remaining: 23910  t=0.9819
+Removed particles: 1  total removed: 91  remaining: 23909  t=0.98385
+Removed particles: 1  total removed: 92  remaining: 23908  t=0.9846
+Removed particles: 1  total removed: 93  remaining: 23907  t=0.98625
+Removed particles: 1  total removed: 94  remaining: 23906  t=0.9863
+Removed particles: 1  total removed: 95  remaining: 23905  t=0.98695
+Removed particles: 1  total removed: 96  remaining: 23904  t=0.98725
+Removed particles: 1  total removed: 97  remaining: 23903  t=0.98735
+Removed particles: 1  total removed: 98  remaining: 23902  t=0.99005
+Removed particles: 1  total removed: 99  remaining: 23901  t=0.9974
+Density/pressure check at t=1  max_rho=1069.95  max_pressure=69952.5
+Fastest particle position [m]:  0.108857 0.0510141  0.345573
+Fastest particle velocity [m/s]: 0.357443 0.347364 -4.09029
+t=1  max_z=1.6629  max_speed=4.12054  above_rim=412
+Removed particles: 1  total removed: 100  remaining: 23900  t=1.00315
+Removed particles: 1  total removed: 101  remaining: 23899  t=1.006
+Removed particles: 1  total removed: 102  remaining: 23898  t=1.00605
+Removed particles: 1  total removed: 103  remaining: 23897  t=1.0076
+Removed particles: 1  total removed: 104  remaining: 23896  t=1.00905
+Removed particles: 1  total removed: 105  remaining: 23895  t=1.00985
+Density/pressure check at t=1.02  max_rho=1048.49  max_pressure=48487.4
+Fastest particle position [m]:  0.116006 0.0579614    0.2618
+Fastest particle velocity [m/s]: 0.357443 0.347364 -4.28649
+t=1.02  max_z=1.61665  max_speed=4.31537  above_rim=381
+Removed particles: 1  total removed: 106  remaining: 23894  t=1.02065
+Removed particles: 1  total removed: 107  remaining: 23893  t=1.02075
+Removed particles: 1  total removed: 108  remaining: 23892  t=1.0208
+Removed particles: 1  total removed: 109  remaining: 23891  t=1.021
+Removed particles: 1  total removed: 110  remaining: 23890  t=1.02115
+Removed particles: 1  total removed: 111  remaining: 23889  t=1.02145
+Removed particles: 1  total removed: 112  remaining: 23888  t=1.0243
+Removed particles: 1  total removed: 113  remaining: 23887  t=1.02435
+Removed particles: 1  total removed: 114  remaining: 23886  t=1.02595
+Removed particles: 1  total removed: 115  remaining: 23885  t=1.0307
+Removed particles: 1  total removed: 116  remaining: 23884  t=1.03345
+Removed particles: 1  total removed: 117  remaining: 23883  t=1.03415
+Removed particles: 1  total removed: 118  remaining: 23882  t=1.0343
+Removed particles: 1  total removed: 119  remaining: 23881  t=1.0356
+Removed particles: 1  total removed: 120  remaining: 23880  t=1.03645
+Removed particles: 1  total removed: 121  remaining: 23879  t=1.0365
+Removed particles: 1  total removed: 122  remaining: 23878  t=1.0366
+Removed particles: 1  total removed: 123  remaining: 23877  t=1.0391
+Density/pressure check at t=1.04  max_rho=1006.13  max_pressure=6130.9
+Fastest particle position [m]:  0.123155 0.0649087  0.174104
+Fastest particle velocity [m/s]: 0.357443 0.347364 -4.48269
+t=1.04  max_z=1.56649  max_speed=4.51031  above_rim=360
+Removed particles: 1  total removed: 124  remaining: 23876  t=1.04015
+Removed particles: 1  total removed: 125  remaining: 23875  t=1.04105
+Removed particles: 1  total removed: 126  remaining: 23874  t=1.04345
+Removed particles: 1  total removed: 127  remaining: 23873  t=1.04395
+Removed particles: 1  total removed: 128  remaining: 23872  t=1.044
+Removed particles: 1  total removed: 129  remaining: 23871  t=1.04435
+Removed particles: 1  total removed: 130  remaining: 23870  t=1.0458
+Removed particles: 1  total removed: 131  remaining: 23869  t=1.0476
+Removed particles: 1  total removed: 132  remaining: 23868  t=1.0495
+Removed particles: 1  total removed: 133  remaining: 23867  t=1.0498
+Removed particles: 1  total removed: 134  remaining: 23866  t=1.05015
+Removed particles: 1  total removed: 135  remaining: 23865  t=1.05085
+Removed particles: 1  total removed: 136  remaining: 23864  t=1.05195
+Removed particles: 1  total removed: 137  remaining: 23863  t=1.0526
+Removed particles: 1  total removed: 138  remaining: 23862  t=1.0532
+Removed particles: 1  total removed: 139  remaining: 23861  t=1.05425
+Removed particles: 1  total removed: 140  remaining: 23860  t=1.0566
+Removed particles: 1  total removed: 141  remaining: 23859  t=1.0573
+Density/pressure check at t=1.06  max_rho=1035.96  max_pressure=35963.8
+Fastest particle position [m]: 0.0528468  0.183778  0.221854
+Fastest particle velocity [m/s]: -0.360726   1.69141  -4.17102
+t=1.06  max_z=1.5124  max_speed=4.51535  above_rim=307
+Removed particles: 1  total removed: 142  remaining: 23858  t=1.0624
+Removed particles: 1  total removed: 143  remaining: 23857  t=1.064
+Removed particles: 1  total removed: 144  remaining: 23856  t=1.0641
+Removed particles: 1  total removed: 145  remaining: 23855  t=1.0643
+Removed particles: 1  total removed: 146  remaining: 23854  t=1.06545
+Removed particles: 1  total removed: 147  remaining: 23853  t=1.0662
+Removed particles: 1  total removed: 148  remaining: 23852  t=1.0723
+Removed particles: 1  total removed: 149  remaining: 23851  t=1.074
+Removed particles: 1  total removed: 150  remaining: 23850  t=1.07555
+Removed particles: 1  total removed: 151  remaining: 23849  t=1.07635
+Removed particles: 1  total removed: 152  remaining: 23848  t=1.07655
+Removed particles: 1  total removed: 153  remaining: 23847  t=1.07665
+Removed particles: 1  total removed: 154  remaining: 23846  t=1.0775
+Removed particles: 2  total removed: 156  remaining: 23844  t=1.07795
+Removed particles: 1  total removed: 157  remaining: 23843  t=1.07835
+Removed particles: 1  total removed: 158  remaining: 23842  t=1.0786
+Removed particles: 1  total removed: 159  remaining: 23841  t=1.079
+Removed particles: 1  total removed: 160  remaining: 23840  t=1.0791
+Density/pressure check at t=1.08  max_rho=1010.35  max_pressure=10350.5
+Fastest particle position [m]:  0.0553167 0.00990848   0.418679
+Fastest particle velocity [m/s]: 0.0212396   0.10277  -4.36356
+t=1.08  max_z=1.45438  max_speed=4.36482  above_rim=283
+Removed particles: 1  total removed: 161  remaining: 23839  t=1.0812
+Removed particles: 1  total removed: 162  remaining: 23838  t=1.0843
+Removed particles: 1  total removed: 163  remaining: 23837  t=1.08455
+Removed particles: 1  total removed: 164  remaining: 23836  t=1.09015
+Removed particles: 1  total removed: 165  remaining: 23835  t=1.09055
+Removed particles: 1  total removed: 166  remaining: 23834  t=1.0908
+Removed particles: 1  total removed: 167  remaining: 23833  t=1.09865
+Removed particles: 1  total removed: 168  remaining: 23832  t=1.09975
+Density/pressure check at t=1.1  max_rho=1004.46  max_pressure=4459.06
+Fastest particle position [m]: 0.0557265 0.0119751  0.329456
+Fastest particle velocity [m/s]: 0.0199496  0.103735  -4.55845
+t=1.1  max_z=1.39245  max_speed=4.55967  above_rim=174
+Removed particles: 1  total removed: 169  remaining: 23831  t=1.1
+Removed particles: 1  total removed: 170  remaining: 23830  t=1.1012
+Removed particles: 1  total removed: 171  remaining: 23829  t=1.1016
+Removed particles: 1  total removed: 172  remaining: 23828  t=1.102
+Removed particles: 1  total removed: 173  remaining: 23827  t=1.1154
+Removed particles: 1  total removed: 174  remaining: 23826  t=1.11635
+Removed particles: 1  total removed: 175  remaining: 23825  t=1.1165
+Removed particles: 1  total removed: 176  remaining: 23824  t=1.11765
+Removed particles: 1  total removed: 177  remaining: 23823  t=1.1183
+Removed particles: 1  total removed: 178  remaining: 23822  t=1.1194
+Density/pressure check at t=1.12  max_rho=1044.05  max_pressure=44045.7
+Fastest particle position [m]: 0.0561205 0.0140535  0.236325
+Fastest particle velocity [m/s]: 0.0195525  0.104032  -4.75425
+t=1.12  max_z=1.32658  max_speed=4.75543  above_rim=25
+Density/pressure check at t=1.14  max_rho=1013.76  max_pressure=13759
+Fastest particle position [m]:  0.0666924 0.00134766   0.341556
+Fastest particle velocity [m/s]: 0.167001 0.156272 -4.82971
+t=1.14  max_z=1.2568  max_speed=4.83512  above_rim=11
+Density/pressure check at t=1.16  max_rho=1017.64  max_pressure=17640.8
+Fastest particle position [m]:  0.0700115 0.00439808   0.243106
+Fastest particle velocity [m/s]: 0.165472 0.150524 -5.01728
+t=1.16  max_z=1.18309  max_speed=5.02226  above_rim=10
+Removed particles: 1  total removed: 179  remaining: 23821  t=1.1692
+Density/pressure check at t=1.18  max_rho=1019.96  max_pressure=19964.7
+Fastest particle position [m]: 0.0845256 0.0230736  0.206254
+Fastest particle velocity [m/s]: 0.0665532  0.246483  -4.97415
+t=1.18  max_z=1.168  max_speed=4.9807  above_rim=4
+Removed particles: 1  total removed: 180  remaining: 23820  t=1.18425
+Removed particles: 1  total removed: 181  remaining: 23819  t=1.1845
+Removed particles: 1  total removed: 182  remaining: 23818  t=1.19795
+Removed particles: 1  total removed: 183  remaining: 23817  t=1.1989
+Density/pressure check at t=1.2  max_rho=1012.89  max_pressure=12893.5
+Fastest particle position [m]:   0.0392383 -0.00274891     0.13823
+Fastest particle velocity [m/s]: -0.0775862  0.0413135   -5.04595
+t=1.2  max_z=1.18789  max_speed=5.04671  above_rim=4
+Density/pressure check at t=1.22  max_rho=1023.72  max_pressure=23720.1
+Fastest particle position [m]: 0.0700891  0.796213   0.41501
+Fastest particle velocity [m/s]: -0.169832 -0.400334  -5.03522
+t=1.22  max_z=1.20386  max_speed=5.05397  above_rim=3
+Density/pressure check at t=1.24  max_rho=1053.32  max_pressure=53324.2
+Fastest particle position [m]: 0.103615 0.778745 0.293565
+Fastest particle velocity [m/s]: 0.0916002 -0.236601  -5.24008
+t=1.24  max_z=1.2159  max_speed=5.24622  above_rim=3
+Density/pressure check at t=1.26  max_rho=1018.54  max_pressure=18537
+Fastest particle position [m]: 0.063429 0.780426 0.205853
+Fastest particle velocity [m/s]: -0.166124 -0.393069  -5.41488
+t=1.26  max_z=1.22402  max_speed=5.43167  above_rim=3
+Density/pressure check at t=1.28  max_rho=1037.7  max_pressure=37699.7
+Fastest particle position [m]: 0.0545087  0.674498  0.233153
+Fastest particle velocity [m/s]: -0.0246359   0.249979   -5.37627
+t=1.28  max_z=1.22822  max_speed=5.38213  above_rim=3
+Density/pressure check at t=1.3  max_rho=1059.85  max_pressure=59848.3
+Fastest particle position [m]:  0.0934538 0.00841728    0.22419
+Fastest particle velocity [m/s]: 0.0293679  0.237172  -5.47263
+t=1.3  max_z=1.22849  max_speed=5.47785  above_rim=3
+Density/pressure check at t=1.32  max_rho=1059.25  max_pressure=59246.1
+Fastest particle position [m]:   0.0582812 0.000951256    0.247221
+Fastest particle velocity [m/s]: -0.085751 -0.356306  -5.51705
+t=1.32  max_z=1.22484  max_speed=5.52921  above_rim=3
+Density/pressure check at t=1.34  max_rho=1014.26  max_pressure=14256.4
+Fastest particle position [m]: 0.0766199  0.358006  0.226335
+Fastest particle velocity [m/s]:  -0.070748 -0.0342985   -5.63045
+t=1.34  max_z=1.21726  max_speed=5.631  above_rim=2
+Removed particles: 1  total removed: 184  remaining: 23816  t=1.34385
+Density/pressure check at t=1.36  max_rho=1023.59  max_pressure=23586.5
+Fastest particle position [m]:  0.146145 0.0173171   0.23024
+Fastest particle velocity [m/s]: 0.0947875 -0.299079  -5.55475
+t=1.36  max_z=1.20576  max_speed=5.5636  above_rim=2
+Density/pressure check at t=1.38  max_rho=1017.07  max_pressure=17073.2
+Fastest particle position [m]: 0.0656034   0.67943   0.43126
+Fastest particle velocity [m/s]:  -3.07301 -0.072769   1.70303
+t=1.38  max_z=1.19034  max_speed=3.51411  above_rim=1
+Removed particles: 1  total removed: 185  remaining: 23815  t=1.393
+Density/pressure check at t=1.4  max_rho=1010.2  max_pressure=10202.6
+Fastest particle position [m]: 0.00414324   0.677975   0.463353
+Fastest particle velocity [m/s]:  -3.07301 -0.072769   1.50683
+t=1.4  max_z=1.17099  max_speed=3.42333  above_rim=1
+Density/pressure check at t=1.42  max_rho=1015.17  max_pressure=15168.3
+Fastest particle position [m]: 0.0408022  0.676024   0.49163
+Fastest particle velocity [m/s]:   3.06784 -0.104009   1.31725
+t=1.42  max_z=1.14772  max_speed=3.3403  above_rim=1
+Density/pressure check at t=1.44  max_rho=1033.31  max_pressure=33311.2
+Fastest particle position [m]: 0.102159 0.673944 0.516008
+Fastest particle velocity [m/s]:   3.06784 -0.104009   1.12105
+t=1.44  max_z=1.12052  max_speed=3.2679  above_rim=1
+Density/pressure check at t=1.46  max_rho=1008.37  max_pressure=8366.9
+Fastest particle position [m]: 0.152907 0.671921  0.53642
+Fastest particle velocity [m/s]:   -3.07533 -0.0706996   0.900482
+t=1.46  max_z=1.0894  max_speed=3.20524  above_rim=1
+Density/pressure check at t=1.48  max_rho=1006.88  max_pressure=6883.16
+Fastest particle position [m]: 0.0914005  0.670507  0.552463
+Fastest particle velocity [m/s]:   -3.07533 -0.0706996   0.704282
+t=1.48  max_z=1.05436  max_speed=3.15574  above_rim=1
+Density/pressure check at t=1.5  max_rho=1007.75  max_pressure=7753.19
+Fastest particle position [m]: 0.0298938  0.669093  0.564581
+Fastest particle velocity [m/s]:   -3.07533 -0.0706996   0.508082
+t=1.5  max_z=1.01539  max_speed=3.11782  above_rim=1
+Density/pressure check at t=1.52  max_rho=1007.95  max_pressure=7954.28
+Fastest particle position [m]: 0.0151599  0.667669   0.57275
+Fastest particle velocity [m/s]:   3.07702 -0.072035  0.308241
+t=1.52  max_z=0.997472  max_speed=3.09326  above_rim=0
+Removed particles: 1  total removed: 186  remaining: 23814  t=1.5317
+Density/pressure check at t=1.54  max_rho=1005.45  max_pressure=5454.36
+Fastest particle position [m]: 0.0767004  0.666228  0.576948
+Fastest particle velocity [m/s]:   3.07702 -0.072035  0.112041
+t=1.54  max_z=0.785374  max_speed=3.07991  above_rim=0
+Density/pressure check at t=1.56  max_rho=1005.5  max_pressure=5499.04
+Fastest particle position [m]: 0.138241 0.664787 0.577222
+Fastest particle velocity [m/s]:    3.07702  -0.072035 -0.0841592
+t=1.56  max_z=0.813114  max_speed=3.07902  above_rim=0
+Density/pressure check at t=1.58  max_rho=1005.23  max_pressure=5234.16
+Fastest particle position [m]: 0.116629 0.663472 0.573447
+Fastest particle velocity [m/s]:   -3.07949 -0.0627308  -0.289672
+t=1.58  max_z=0.836929  max_speed=3.09372  above_rim=0
+Density/pressure check at t=1.6  max_rho=1015.54  max_pressure=15540.3
+Fastest particle position [m]: 0.0550397  0.662217  0.565686
+Fastest particle velocity [m/s]:   -3.07949 -0.0627308  -0.485872
+t=1.6  max_z=0.85682  max_speed=3.11821  above_rim=0
+Density/pressure check at t=1.62  max_rho=1059.16  max_pressure=59162.5
+Fastest particle position [m]: 0.0539031  0.318812  0.242382
+Fastest particle velocity [m/s]:   2.45955 -0.581597  -0.89106
+t=1.62  max_z=0.872787  max_speed=2.67986  above_rim=0
+Density/pressure check at t=1.64  max_rho=1021.88  max_pressure=21875.2
+Fastest particle position [m]: 0.0517096  0.659406  0.538112
+Fastest particle velocity [m/s]:    3.07655 -0.0786688  -0.892898
+t=1.64  max_z=0.884831  max_speed=3.20447  above_rim=0
+Density/pressure check at t=1.66  max_rho=1005.03  max_pressure=5033.31
+Fastest particle position [m]: 0.113241 0.657833 0.518287
+Fastest particle velocity [m/s]:    3.07655 -0.0786688    -1.0891
+t=1.66  max_z=0.89295  max_speed=3.26458  above_rim=0
+Density/pressure check at t=1.68  max_rho=1008.98  max_pressure=8983.57
+Fastest particle position [m]: 0.141721 0.656133 0.494427
+Fastest particle velocity [m/s]:  -3.06439 -0.102132  -1.30673
+t=1.68  max_z=0.897145  max_speed=3.33294  above_rim=0
+Density/pressure check at t=1.7  max_rho=1004.66  max_pressure=4661.41
+Fastest particle position [m]: 0.080433  0.65409 0.466325
+Fastest particle velocity [m/s]:  -3.06439 -0.102132  -1.50293
+t=1.7  max_z=0.897417  max_speed=3.41463  above_rim=0
+Density/pressure check at t=1.72  max_rho=1004.75  max_pressure=4746.15
+Fastest particle position [m]: 0.0191452  0.652047    0.4343
+Fastest particle velocity [m/s]:  -3.06439 -0.102132  -1.69913
+t=1.72  max_z=0.893764  max_speed=3.50542  above_rim=0
+Density/pressure check at t=1.74  max_rho=1004.87  max_pressure=4868.61
+Fastest particle position [m]: 0.0258328  0.650199  0.398521
+Fastest particle velocity [m/s]:    3.07365 -0.0842762   -1.88046
+t=1.74  max_z=0.886187  max_speed=3.60424  above_rim=0
+Density/pressure check at t=1.76  max_rho=1004.76  max_pressure=4763.62
+Fastest particle position [m]: 0.0873058  0.648514  0.358944
+Fastest particle velocity [m/s]:    3.07365 -0.0842762   -2.07666
+t=1.76  max_z=0.874686  max_speed=3.71039  above_rim=0
+Density/pressure check at t=1.78  max_rho=1004.76  max_pressure=4756.12
+Fastest particle position [m]: 0.148779 0.646828 0.315444
+Fastest particle velocity [m/s]:    3.07365 -0.0842762   -2.27286
+t=1.78  max_z=0.859262  max_speed=3.82366  above_rim=0
+Density/pressure check at t=1.8  max_rho=1004.31  max_pressure=4308.93
+Fastest particle position [m]:  0.10616 0.645065 0.268084
+Fastest particle velocity [m/s]:  -3.07642 -0.089193    -2.465
+t=1.8  max_z=0.839913  max_speed=3.94316  above_rim=0
+Density/pressure check at t=1.82  max_rho=1004.59  max_pressure=4591.12
+Fastest particle position [m]: 0.0446317  0.643281  0.216817
+Fastest particle velocity [m/s]:  -3.07642 -0.089193   -2.6612
+t=1.82  max_z=0.81664  max_speed=4.0687  above_rim=0
+Density/pressure check at t=1.84  max_rho=1004.42  max_pressure=4415.14
+Fastest particle position [m]: 0.0024748   0.64228  0.165447
+Fastest particle velocity [m/s]:  3.58825 0.196892 -1.41035
+t=1.84  max_z=0.789443  max_speed=3.8605  above_rim=0
+Density/pressure check at t=1.86  max_rho=1010.24  max_pressure=10245
+Fastest particle position [m]: 0.145554 0.560564 0.324571
+Fastest particle velocity [m/s]:     2.049 -0.518789  -2.67105
+t=1.86  max_z=0.758323  max_speed=3.40618  above_rim=0
+Density/pressure check at t=1.88  max_rho=1004.94  max_pressure=4943.56
+Fastest particle position [m]: 0.127719 0.550191 0.269123
+Fastest particle velocity [m/s]:  -2.04635 -0.518405  -2.87169
+t=1.88  max_z=0.723278  max_speed=3.56412  above_rim=0
+Density/pressure check at t=1.9  max_rho=1005.16  max_pressure=5158.04
+Fastest particle position [m]: 0.0868597  0.539846  0.209848
+Fastest particle velocity [m/s]: -1.99785 -0.49723 -2.94246
+t=1.9  max_z=0.684344  max_speed=3.5912  above_rim=0
+Density/pressure check at t=1.92  max_rho=1005  max_pressure=4995.83
+Fastest particle position [m]: 0.131805 0.356835 0.240877
+Fastest particle velocity [m/s]: -0.348323 -0.186305  -2.91038
+t=1.92  max_z=0.641496  max_speed=2.93706  above_rim=0
+Density/pressure check at t=1.94  max_rho=1005.76  max_pressure=5762.52
+Fastest particle position [m]: 0.127322  0.31186  0.36197
+Fastest particle velocity [m/s]:   0.1431   1.1707 -2.81076
+t=1.94  max_z=0.594724  max_speed=3.04818  above_rim=0
+Density/pressure check at t=1.96  max_rho=1005.26  max_pressure=5258.49
+Fastest particle position [m]: 0.130184 0.335274 0.303788
+Fastest particle velocity [m/s]:   0.1431   1.1707 -3.00696
+t=1.96  max_z=0.544027  max_speed=3.22999  above_rim=0
+Density/pressure check at t=1.98  max_rho=1005.85  max_pressure=5850.89
+Fastest particle position [m]: 0.133046 0.358688 0.241682
+Fastest particle velocity [m/s]:   0.1431   1.1707 -3.20316
+t=1.98  max_z=0.489407  max_speed=3.4134  above_rim=0
+Density/pressure check at t=2  max_rho=1006.32  max_pressure=6319.64
+Fastest particle position [m]: 0.135983 0.381973   0.1761
+Fastest particle velocity [m/s]: 0.180161  1.05887 -3.03352
+t=2  max_z=0.430863  max_speed=3.21806  above_rim=0
+Density/pressure check at t=2.02  max_rho=1005.72  max_pressure=5721.85
+Fastest particle position [m]: 0.0369865  0.453007  0.258197
+Fastest particle velocity [m/s]: 0.0646252 0.0356983  -3.38069
+t=2.02  max_z=0.368394  max_speed=3.38149  above_rim=0
+Density/pressure check at t=2.04  max_rho=1005.57  max_pressure=5566.07
+Fastest particle position [m]: 0.038282 0.453725  0.18866
+Fastest particle velocity [m/s]:  0.069871 0.0424784  -3.49616
+t=2.04  max_z=0.302002  max_speed=3.49711  above_rim=0
+Density/pressure check at t=2.06  max_rho=1005.77  max_pressure=5771.6
+Fastest particle position [m]:  0.102731 0.0388946  0.231686
+Fastest particle velocity [m/s]: -0.301411 -0.514201  -3.61367
+t=2.06  max_z=0.231686  max_speed=3.66249  above_rim=0
+Density/pressure check at t=2.08  max_rho=1005.47  max_pressure=5474.17
+Fastest particle position [m]: 0.0996136  0.032694  0.190172
+Fastest particle velocity [m/s]: -0.0289055  -0.152749  -0.676411
+t=2.08  max_z=0.229413  max_speed=0.694046  above_rim=0
+Density/pressure check at t=2.1  max_rho=1005.62  max_pressure=5615.26
+Fastest particle position [m]: 0.144721 0.803017 0.209336
+Fastest particle velocity [m/s]: -0.0278998  0.0101031   0.285509
+t=2.1  max_z=0.231871  max_speed=0.287047  above_rim=0
+Density/pressure check at t=2.12  max_rho=1005.48  max_pressure=5476.82
+Fastest particle position [m]: -0.000570503     0.385167     0.172048
+Fastest particle velocity [m/s]:   0.041425 -0.0782437   -0.27636
+t=2.12  max_z=0.231635  max_speed=0.290194  above_rim=0
+Density/pressure check at t=2.14  max_rho=1005.46  max_pressure=5455.5
+Fastest particle position [m]: 0.000205456    0.383627    0.166611
+Fastest particle velocity [m/s]:  0.0295718 -0.0735067  -0.271211
+t=2.14  max_z=0.231808  max_speed=0.282548  above_rim=0
+Density/pressure check at t=2.16  max_rho=1005.6  max_pressure=5597.58
+Fastest particle position [m]:   0.0132587 -0.00286861    0.223252
+Fastest particle velocity [m/s]: 0.0404205 0.0276476 -0.318209
+t=2.16  max_z=0.229813  max_speed=0.321955  above_rim=0
+Density/pressure check at t=2.18  max_rho=1005.64  max_pressure=5641.67
+Fastest particle position [m]:    0.013924 -0.00217367    0.216129
+Fastest particle velocity [m/s]: 0.0267966 0.0396935 -0.385529
+t=2.18  max_z=0.225776  max_speed=0.388493  above_rim=0
+Density/pressure check at t=2.2  max_rho=1005.59  max_pressure=5593.71
+Fastest particle position [m]:    0.014345 -0.00134977    0.208153
+Fastest particle velocity [m/s]: 0.0133559 0.0398099 -0.405313
+t=2.2  max_z=0.220038  max_speed=0.407482  above_rim=0
+Density/pressure check at t=2.22  max_rho=1005.46  max_pressure=5459.55
+Fastest particle position [m]:    0.0145194 -0.000659382     0.200154
+Fastest particle velocity [m/s]: 0.00565393    0.02722  -0.392836
+t=2.22  max_z=0.2163  max_speed=0.393819  above_rim=0
+Density/pressure check at t=2.24  max_rho=1005.35  max_pressure=5350.79
+Fastest particle position [m]:    0.144451 -0.00145682    0.204762
+Fastest particle velocity [m/s]: -0.0122553 0.00648991  -0.403613
+t=2.24  max_z=0.212067  max_speed=0.403851  above_rim=0
+Density/pressure check at t=2.26  max_rho=1005.37  max_pressure=5368.42
+Fastest particle position [m]:    0.144101 -0.00137885    0.196604
+Fastest particle velocity [m/s]: -0.0214731 0.00314125  -0.405433
+t=2.26  max_z=0.206873  max_speed=0.406013  above_rim=0
+Density/pressure check at t=2.28  max_rho=1005.48  max_pressure=5481.71
+Fastest particle position [m]:   0.134274 0.00207146   0.189327
+Fastest particle velocity [m/s]: -0.0210773  0.0180248  -0.388884
+t=2.28  max_z=0.202221  max_speed=0.389872  above_rim=0
+Density/pressure check at t=2.3  max_rho=1005.21  max_pressure=5211.47
+Fastest particle position [m]:   0.0959703 0.000696412    0.180394
+Fastest particle velocity [m/s]: -0.0664839 -0.0339888  -0.360555
+t=2.3  max_z=0.196966  max_speed=0.368205  above_rim=0
+Density/pressure check at t=2.32  max_rho=1005.1  max_pressure=5098.5
+Fastest particle position [m]: -0.00107394    0.425346    0.161174
+Fastest particle velocity [m/s]: -0.0402039   -0.12094   0.375435
+t=2.32  max_z=0.193086  max_speed=0.396477  above_rim=0
+Density/pressure check at t=2.34  max_rho=1004.96  max_pressure=4962.94
+Fastest particle position [m]: -0.00146771    0.411993    0.169543
+Fastest particle velocity [m/s]: -0.0348171 -0.0419719   0.517175
+t=2.34  max_z=0.192289  max_speed=0.520043  above_rim=0
+Density/pressure check at t=2.36  max_rho=1004.85  max_pressure=4849.91
+Fastest particle position [m]: -0.00225191    0.411184    0.180429
+Fastest particle velocity [m/s]: -0.0334498 -0.0484944   0.555451
+t=2.36  max_z=0.191012  max_speed=0.558567  above_rim=0
+Density/pressure check at t=2.38  max_rho=1004.85  max_pressure=4853.84
+Fastest particle position [m]: -0.00285322    0.410046    0.191454
+Fastest particle velocity [m/s]: -0.0234323 -0.0627012   0.531772
+t=2.38  max_z=0.192689  max_speed=0.535968  above_rim=0
+Density/pressure check at t=2.4  max_rho=1004.73  max_pressure=4733.51
+Fastest particle position [m]: -0.00283998    0.398035    0.197612
+Fastest particle velocity [m/s]: 0.00706827 -0.0470304   0.488316
+t=2.4  max_z=0.201425  max_speed=0.490626  above_rim=0
+Density/pressure check at t=2.42  max_rho=1004.67  max_pressure=4673.26
+Fastest particle position [m]: -0.00159326    0.382539    0.206365
+Fastest particle velocity [m/s]: -0.00809994    0.023695    0.448759
+t=2.42  max_z=0.209715  max_speed=0.449457  above_rim=0
+Density/pressure check at t=2.44  max_rho=1004.6  max_pressure=4604.65
+Fastest particle position [m]: 0.0152041  0.394953  0.205418
+Fastest particle velocity [m/s]:  0.0219688 0.00573133   0.373541
+t=2.44  max_z=0.216275  max_speed=0.37423  above_rim=0
+Density/pressure check at t=2.46  max_rho=1004.65  max_pressure=4649.76
+Fastest particle position [m]: 0.0236286  0.387921  0.209233
+Fastest particle velocity [m/s]:  -0.0215137 -0.00712026    0.313477
+t=2.46  max_z=0.2213  max_speed=0.314295  above_rim=0
+Density/pressure check at t=2.48  max_rho=1004.77  max_pressure=4767.45
+Fastest particle position [m]: 0.0377675  0.381576  0.212931
+Fastest particle velocity [m/s]: 0.0194649 0.0171329  0.236455
+t=2.48  max_z=0.225061  max_speed=0.237872  above_rim=0
+Density/pressure check at t=2.5  max_rho=1004.84  max_pressure=4837.11
+Fastest particle position [m]: 0.0376265   0.37882  0.214647
+Fastest particle velocity [m/s]:  0.0340942 0.00666961    0.15863
+t=2.5  max_z=0.22695  max_speed=0.16239  above_rim=0
+Density/pressure check at t=2.52  max_rho=1004.81  max_pressure=4811.85
+Fastest particle position [m]:  0.150497 0.0243531  0.156991
+Fastest particle velocity [m/s]: 0.00723181 -0.0125411   0.131081
+t=2.52  max_z=0.226778  max_speed=0.131878  above_rim=0
+Density/pressure check at t=2.54  max_rho=1004.89  max_pressure=4891.14
+Fastest particle position [m]:  0.150647 0.0240051  0.159839
+Fastest particle velocity [m/s]: 0.00773972 -0.0214553   0.151951
+t=2.54  max_z=0.224971  max_speed=0.153653  above_rim=0
+Density/pressure check at t=2.56  max_rho=1004.8  max_pressure=4795.47
+Fastest particle position [m]: 0.000155126    0.383148    0.221138
+Fastest particle velocity [m/s]:   0.0161796 -0.00383566   -0.218756
+t=2.56  max_z=0.221745  max_speed=0.219387  above_rim=0
+Density/pressure check at t=2.58  max_rho=1004.87  max_pressure=4872.11
+Fastest particle position [m]: 0.000415775    0.383008    0.216143
+Fastest particle velocity [m/s]:  0.00914981 -0.00988048   -0.278535
+t=2.58  max_z=0.218339  max_speed=0.27886  above_rim=0
+Density/pressure check at t=2.6  max_rho=1004.91  max_pressure=4905.17
+Fastest particle position [m]: 0.000868399    0.396452    0.210729
+Fastest particle velocity [m/s]:  0.0166846 -0.0131431  -0.317888
+t=2.6  max_z=0.213504  max_speed=0.318597  above_rim=0
+Density/pressure check at t=2.62  max_rho=1005.06  max_pressure=5056.07
+Fastest particle position [m]: 0.000478133    0.382303    0.203543
+Fastest particle velocity [m/s]: -0.00886789  -0.0227358   -0.343025
+t=2.62  max_z=0.20752  max_speed=0.343892  above_rim=0
+Density/pressure check at t=2.64  max_rho=1005.2  max_pressure=5198.06
+Fastest particle position [m]: 0.000179066    0.381738    0.196549
+Fastest particle velocity [m/s]: -0.0210553 -0.0330715  -0.354105
+t=2.64  max_z=0.200838  max_speed=0.356269  above_rim=0
+Density/pressure check at t=2.66  max_rho=1005.23  max_pressure=5227.96
+Fastest particle position [m]: 0.0403945  0.382456  0.193836
+Fastest particle velocity [m/s]:  0.0407003 -0.0475405  -0.352486
+t=2.66  max_z=0.194105  max_speed=0.357999  above_rim=0
+Density/pressure check at t=2.68  max_rho=1005.18  max_pressure=5177.76
+Fastest particle position [m]: 0.0412555   0.38146  0.186875
+Fastest particle velocity [m/s]:  0.0443899 -0.0517039  -0.341316
+t=2.68  max_z=0.189167  max_speed=0.348053  above_rim=0
+Density/pressure check at t=2.7  max_rho=1005.25  max_pressure=5254.82
+Fastest particle position [m]: 0.0421656  0.380394  0.180278
+Fastest particle velocity [m/s]:   0.046216 -0.0547026  -0.315942
+t=2.7  max_z=0.185516  max_speed=0.323956  above_rim=0
+Density/pressure check at t=2.72  max_rho=1005.3  max_pressure=5296.86
+Fastest particle position [m]: 0.0335045  0.339845  0.174256
+Fastest particle velocity [m/s]: 0.0264036 -0.127008  -0.25526
+t=2.72  max_z=0.18529  max_speed=0.286331  above_rim=0
+Density/pressure check at t=2.74  max_rho=1005.38  max_pressure=5377.43
+Fastest particle position [m]: -0.000846755     0.797957     0.184393
+Fastest particle velocity [m/s]: -0.0214974  0.0138035   0.261304
+t=2.74  max_z=0.187619  max_speed=0.26255  above_rim=0
+Density/pressure check at t=2.76  max_rho=1005.31  max_pressure=5305.71
+Fastest particle position [m]: -0.00124428    0.798329    0.189467
+Fastest particle velocity [m/s]: -0.0162372   0.023022    0.24538
+t=2.76  max_z=0.190724  max_speed=0.246992  above_rim=0
+Density/pressure check at t=2.78  max_rho=1005.25  max_pressure=5253.7
+Fastest particle position [m]: -0.0010618    0.77068   0.191015
+Fastest particle velocity [m/s]: -0.0130006  0.0579349   0.213041
+t=2.78  max_z=0.194492  max_speed=0.221161  above_rim=0
+Density/pressure check at t=2.8  max_rho=1005.2  max_pressure=5195.12
+Fastest particle position [m]: 0.0240233  0.780688  0.190595
+Fastest particle velocity [m/s]: -0.0104879  0.0223771   0.200823
+t=2.8  max_z=0.198006  max_speed=0.202338  above_rim=0
+Density/pressure check at t=2.82  max_rho=1005.2  max_pressure=5202.02
+Fastest particle position [m]: 0.150119 0.416621 0.161827
+Fastest particle velocity [m/s]: -0.00801049 -0.00141254   -0.179685
+t=2.82  max_z=0.200697  max_speed=0.179869  above_rim=0
+Density/pressure check at t=2.84  max_rho=1005.21  max_pressure=5214.85
+Fastest particle position [m]: 0.149055 0.430122 0.158638
+Fastest particle velocity [m/s]:  0.033003  0.011227 -0.162519
+t=2.84  max_z=0.202655  max_speed=0.166216  above_rim=0
+Density/pressure check at t=2.86  max_rho=1005.22  max_pressure=5217.6
+Fastest particle position [m]: 0.149329 0.430144 0.155808
+Fastest particle velocity [m/s]:    0.012305 -0.00657793   -0.130535
+t=2.86  max_z=0.203969  max_speed=0.131278  above_rim=0
+Density/pressure check at t=2.88  max_rho=1005.24  max_pressure=5237.15
+Fastest particle position [m]: 0.149788 0.430595 0.154259
+Fastest particle velocity [m/s]: -0.0016577 -0.0161146  -0.101456
+t=2.88  max_z=0.204628  max_speed=0.102741  above_rim=0
+Density/pressure check at t=2.9  max_rho=1005.35  max_pressure=5346.59
+Fastest particle position [m]: -0.00131861    0.283126    0.166502
+Fastest particle velocity [m/s]: -0.00217611   0.0639063   0.0645975
+t=2.9  max_z=0.204637  max_speed=0.0908932  above_rim=0
+Density/pressure check at t=2.92  max_rho=1005.38  max_pressure=5380.01
+Fastest particle position [m]: -0.00134821    0.284667    0.167847
+Fastest particle velocity [m/s]: -0.00101468    0.089422     0.06943
+t=2.92  max_z=0.204047  max_speed=0.113216  above_rim=0
+Density/pressure check at t=2.94  max_rho=1005.27  max_pressure=5274.43
+Fastest particle position [m]: -0.00083124    0.275812    0.170289
+Fastest particle velocity [m/s]: -0.00131508    0.118528    0.055248
+t=2.94  max_z=0.202672  max_speed=0.130778  above_rim=0
+Density/pressure check at t=2.96  max_rho=1005.17  max_pressure=5169.33
+Fastest particle position [m]: 0.149974 0.304559 0.162883
+Fastest particle velocity [m/s]: -0.00751937    0.127355   0.0983318
+t=2.96  max_z=0.200755  max_speed=0.161074  above_rim=0
+Density/pressure check at t=2.98  max_rho=1005.2  max_pressure=5196.35
+Fastest particle position [m]: 0.149786  0.29995  0.16573
+Fastest particle velocity [m/s]: 0.0154848  0.153698  0.123876
+t=2.98  max_z=0.198396  max_speed=0.198011  above_rim=0
+Density/pressure check at t=3  max_rho=1005.22  max_pressure=5217.07
+Fastest particle position [m]: 0.150052 0.303167 0.168534
+Fastest particle velocity [m/s]: 0.0118137  0.166837  0.153548
+t=3  max_z=0.19577  max_speed=0.227049  above_rim=0
+Particles: 23814
+Frames: 151
+Output: "output/assignment5_custom"
+Maximum displacement [m]: 0.64214
+Maximum speed [m/s]: 0.227049
+
+Dam-break extent check
+Minimum position [x y z, m]: -0.00167593 -0.00258905 -0.00226297
+Maximum position [x y z, m]: 0.151765 0.801508  0.19577
+Particles above the rim: 0
+Particles outside the tank footprint: 0

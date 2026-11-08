@@ -92,12 +92,13 @@ std::vector<double> compute_boundary_masses(
 }
 int main(int argc, char** argv)
 {
-            const std::filesystem::path output_folder =
-        argc > 1 ? argv[1] : "output/assignment5_floor_friction";
+    const std::filesystem::path output_folder =
+        argc > 1 ? argv[1] : "output/assignment5_dambreak_reference";
 
     std::filesystem::create_directories(output_folder);
 		// Assignment 5(a): fluid particle radius is 3 cm.
-	constexpr double particle_radius = 0.03;		
+    // Assignment 5(b): particle radius is 5 mm.
+    constexpr double particle_radius = 0.005;
 	constexpr double particle_distance = 2.0 * particle_radius;
 	// Rest density of water in kg/m^3.
     constexpr double rest_density = 1000.0;
@@ -107,21 +108,21 @@ int main(int argc, char** argv)
     particle_distance * particle_distance * particle_distance;
 
    // Particle mass in kg.
-    // Assignment 5(a)(i): reduce nominal fluid mass by 10%
-    // to limit initial pressure caused by sampling errors.
+    // Assignment 5(b): nominal mass from rest density and sampling volume.
     constexpr double particle_mass =
-        0.9 * rest_density * particle_volume;
+        rest_density * particle_volume;
 
     constexpr double pressure_stiffness = 1000.0;
 
     // Assignment 5(a)(ii): fluid kinematic viscosity in m^2/s.
-    constexpr double fluid_viscosity = 0.1;
+    constexpr double fluid_viscosity = 0.0025;
 	 // Assignment 5(a)(vi): friction with the stationary boundary.
-    constexpr double boundary_viscosity = 1.0;
-    constexpr double frame_rate = 30.0;
-    // Inspect the initial floor impact over one second.
-    constexpr int number_of_frames = 31;
-			// Kernel smoothing length required by Exercise 2.
+    constexpr double boundary_viscosity = 0.0;
+    // Assignment 5(b): export every 0.02 s to include exactly t = 0.38 s.
+    constexpr double frame_rate = 50.0;    // Inspect the initial floor impact over one second.
+    // Run through the observed velocity spike: 0.4 seconds.
+    // Frames 0 through 19 cover t = 0 through 0.38 s.
+    constexpr int number_of_frames = 20;			// Kernel smoothing length required by Exercise 2.
     constexpr double smoothing_length = 1.2 * particle_distance;
 	constexpr double compact_support = 2.0 * smoothing_length;
 
@@ -131,30 +132,25 @@ int main(int argc, char** argv)
 
 	// Assignment 5(a): sample a one-metre cube with 6 cm spacing.
 // Keep particle centres at least one radius inside the box.
-const double box_length = 1.0;
+    // Assignment 5(b): fluid dimensions are 0.15 x 0.25 x 0.50 m.
+    // Place particles at the centres of 1 cm sampling cells.
+    constexpr int fluid_count_x = 15;
+    constexpr int fluid_count_y = 25;
+    constexpr int fluid_count_z = 50;
 
-for (int ix = 0; ; ++ix) {
-    const double x = particle_radius + ix * particle_distance;
-    if (x > box_length - particle_radius + 1e-12) {
-        break;
-    }
-
-    for (int iy = 0; ; ++iy) {
-        const double y = particle_radius + iy * particle_distance;
-        if (y > box_length - particle_radius + 1e-12) {
-            break;
-        }
-
-        for (int iz = 0; ; ++iz) {
-            const double z = particle_radius + iz * particle_distance;
-            if (z > box_length - particle_radius + 1e-12) {
-                break;
+    for (int ix = 0; ix < fluid_count_x; ++ix) {
+        for (int iy = 0; iy < fluid_count_y; ++iy) {
+            for (int iz = 0; iz < fluid_count_z; ++iz) {
+                positions.emplace_back(
+                    (ix + 0.5) * particle_distance,
+                    (iy + 0.5) * particle_distance,
+                    (iz + 0.5) * particle_distance);
             }
-
-            positions.emplace_back(x, y, z);
         }
     }
-}
+
+    std::cout << "Initial fluid particles: "
+              << positions.size() << '\n';
 
 	       // Assignment 5(a)(iv): a single fluid block starts from rest.
     std::vector<Eigen::Vector3d> velocities(
@@ -170,20 +166,51 @@ for (int ix = 0; ; ++ix) {
 		positions.front().data(), positions.size(), true, true, true);
     // Assignment 5(a)(iv): gravity acts in the negative z direction.
     // Assignment 5(a)(v): sample a static floor below the fluid block.
-    // The initial gap avoids placing fluid directly against the boundary.
-    const double floor_z = -0.30;
+    // Assignment 5(b): open-top tank.
+    // Nominal dimensions: 0.15 x 0.80 x 1.00 m.
+    // Offset each boundary outwards by one particle diameter.
+    const double boundary_gap = particle_distance;
     const double boundary_spacing = 0.8 * particle_distance;
 
+    const double tank_x_min = -boundary_gap;
+    const double tank_x_max = 0.15 + boundary_gap;
+
+    const double tank_y_min = -boundary_gap;
+    const double tank_y_max = 0.80 + boundary_gap;
+
+    const double floor_z = -boundary_gap;
+    const double tank_z_max = 1.00 + boundary_gap;
+
+    // Bottom vertices: 0, 1, 2, 3.
+    // Corresponding upper vertices: 4, 5, 6, 7.
     const std::vector<Eigen::Vector3d> boundary_vertices = {
-        Eigen::Vector3d(-2.0, -2.0, floor_z),
-        Eigen::Vector3d( 3.0, -2.0, floor_z),
-        Eigen::Vector3d( 3.0,  3.0, floor_z),
-        Eigen::Vector3d(-2.0,  3.0, floor_z)
+        Eigen::Vector3d(tank_x_min, tank_y_min, floor_z),
+        Eigen::Vector3d(tank_x_max, tank_y_min, floor_z),
+        Eigen::Vector3d(tank_x_max, tank_y_max, floor_z),
+        Eigen::Vector3d(tank_x_min, tank_y_max, floor_z),
+
+        Eigen::Vector3d(tank_x_min, tank_y_min, tank_z_max),
+        Eigen::Vector3d(tank_x_max, tank_y_min, tank_z_max),
+        Eigen::Vector3d(tank_x_max, tank_y_max, tank_z_max),
+        Eigen::Vector3d(tank_x_min, tank_y_max, tank_z_max)
     };
 
+    // Two triangles per face; no top face.
     const std::vector<std::array<int, 3>> boundary_triangles = {
-        {0, 1, 2},
-        {0, 2, 3}
+        // Bottom.
+        {0, 1, 2}, {0, 2, 3},
+
+        // Wall at minimum x.
+        {0, 3, 7}, {0, 7, 4},
+
+        // Wall at maximum x.
+        {1, 5, 6}, {1, 6, 2},
+
+        // Wall at minimum y.
+        {0, 4, 5}, {0, 5, 1},
+
+        // Wall at maximum y.
+        {3, 2, 6}, {3, 6, 7}
     };
 
     std::vector<Eigen::Vector3d> boundary_positions;
@@ -214,8 +241,7 @@ for (int ix = 0; ; ++ix) {
         static_cast<unsigned int>(boundary_positions.size()),
         false, true, true);
 
-    std::cout << "Floor particles: "
-              << boundary_positions.size() << '\n';
+    std::cout << "Boundary particles: "              << boundary_positions.size() << '\n';
     std::cout << "Floor height [m]: "
               << floor_z << '\n';
     std::cout << "Boundary spacing [m]: "
@@ -316,8 +342,9 @@ for (int ix = 0; ; ++ix) {
                 }		}	
 
 			            // Compare floor impact using a smaller maximum time step.
-            const double cfl_step = learnSPH::cfl_time_step(
-                velocities, particle_radius, 0.5, 0.00001, 0.00025);
+                // Diagnose the velocity spike with a smaller maximum time step.
+    const double cfl_step = learnSPH::cfl_time_step(
+        velocities, particle_radius, 0.5, 0.000001, 0.00005);
 			const double time_step =
 				std::min(cfl_step, next_frame_time - simulation_time);
                        // Assignment 5(a)(i): compute pressure from current densities.
@@ -418,24 +445,41 @@ for (int ix = 0; ; ++ix) {
                     return 1;
                 }
             }
-            // Detect penetration beneath the interior of the floor.
-            // Exclude an edge margin where particles can leave the floor.
-            for (std::size_t i = 0; i < positions.size(); ++i) {
-                const bool above_floor_interior =
-                    positions[i].x() > -2.0 + compact_support &&
-                    positions[i].x() <  3.0 - compact_support &&
-                    positions[i].y() > -2.0 + compact_support &&
-                    positions[i].y() <  3.0 - compact_support;
+            // Assignment 5(b): diagnose penetration through the tank.
+            // The top is open, so rising above the rim is allowed.
+            const double penetration_tolerance = particle_radius;
 
-                if (above_floor_interior &&
-                    positions[i].z() < floor_z - particle_radius) {
+            for (std::size_t i = 0; i < positions.size(); ++i) {
+                const Eigen::Vector3d& p = positions[i];
+
+                // Exclude the rim region from side-wall diagnostics.
+                const bool below_rim =
+                    p.z() < tank_z_max - compact_support;
+
+                const bool outside_side =
+                    p.x() < tank_x_min - penetration_tolerance ||
+                    p.x() > tank_x_max + penetration_tolerance ||
+                    p.y() < tank_y_min - penetration_tolerance ||
+                    p.y() > tank_y_max + penetration_tolerance;
+
+                const bool inside_floor_footprint =
+                    p.x() >= tank_x_min &&
+                    p.x() <= tank_x_max &&
+                    p.y() >= tank_y_min &&
+                    p.y() <= tank_y_max;
+
+                const bool below_floor =
+                    p.z() < floor_z - penetration_tolerance;
+
+                if ((below_rim && outside_side) ||
+                    (inside_floor_footprint && below_floor)) {
                     std::cerr
-                        << "\nFloor penetration check\n"
+                        << "\nTank escape or penetration detected\n"
                         << "Time [s]: "
                         << simulation_time + time_step << '\n'
                         << "Particle index: " << i << '\n'
                         << "Position [m]: "
-                        << positions[i].transpose() << '\n'
+                        << p.transpose() << '\n'
                         << "Velocity [m/s]: "
                         << velocities[i].transpose() << '\n';
 
@@ -445,9 +489,62 @@ for (int ix = 0; ; ++ix) {
 
             simulation_time += time_step;		}
 
-		update_height(positions, heights);
-		learnSPH::write_particles_to_vtk(
-			frame_path(output_folder, frame), positions, heights, velocities);
+        update_height(positions, heights);
+
+        // Densities belong to the last force evaluation before this output.
+        const auto maximum_density_it =
+            std::max_element(densities.begin(), densities.end());
+
+        const double maximum_density_now = *maximum_density_it;
+
+        const double maximum_pressure_now = std::max(
+            0.0,
+            pressure_stiffness * (maximum_density_now - rest_density));
+
+        // Locate the fastest particle in the current output frame.
+        std::size_t fastest_particle = 0;
+
+        for (std::size_t i = 1; i < velocities.size(); ++i) {
+            if (velocities[i].squaredNorm() >
+                velocities[fastest_particle].squaredNorm()) {
+                fastest_particle = i;
+            }
+        }
+
+        std::cout
+            << "Density/pressure check at t=" << simulation_time
+            << "  max_rho=" << maximum_density_now
+            << "  max_pressure=" << maximum_pressure_now
+            << '\n'
+            << "Fastest particle position [m]: "
+            << positions[fastest_particle].transpose()
+            << '\n'
+            << "Fastest particle velocity [m/s]: "
+            << velocities[fastest_particle].transpose()
+            << '\n';
+        // Track when strong upward motion first appears.
+        double frame_max_z = positions.front().z();
+        double frame_max_speed = 0.0;
+        std::size_t frame_above_rim = 0;
+
+        for (std::size_t i = 0; i < positions.size(); ++i) {
+            frame_max_z = std::max(frame_max_z, positions[i].z());
+            frame_max_speed = std::max(
+                frame_max_speed, velocities[i].norm());
+
+            if (positions[i].z() > tank_z_max) {
+                ++frame_above_rim;
+            }
+        }
+
+        std::cout << "t=" << simulation_time
+                  << "  max_z=" << frame_max_z
+                  << "  max_speed=" << frame_max_speed
+                  << "  above_rim=" << frame_above_rim
+                  << '\n';
+
+        learnSPH::write_particles_to_vtk(
+            frame_path(output_folder, frame), positions, heights, velocities);
 	}
     std::cout << "Particles: " << positions.size() << '\n';
     std::cout << "Frames: " << number_of_frames << '\n';
@@ -475,6 +572,37 @@ for (int ix = 0; ; ++ix) {
               << maximum_displacement << '\n';
     std::cout << "Maximum speed [m/s]: "
               << maximum_speed << '\n';
+
+    // Diagnose the final spatial extent of the dam-break simulation.
+    Eigen::Vector3d minimum_position = positions.front();
+    Eigen::Vector3d maximum_position = positions.front();
+
+    std::size_t particles_above_rim = 0;
+    std::size_t particles_outside_footprint = 0;
+
+    for (const Eigen::Vector3d& p : positions) {
+        minimum_position = minimum_position.cwiseMin(p);
+        maximum_position = maximum_position.cwiseMax(p);
+
+        if (p.z() > tank_z_max) {
+            ++particles_above_rim;
+        }
+
+        if (p.x() < tank_x_min || p.x() > tank_x_max ||
+            p.y() < tank_y_min || p.y() > tank_y_max) {
+            ++particles_outside_footprint;
+        }
+    }
+
+    std::cout << "\nDam-break extent check\n";
+    std::cout << "Minimum position [x y z, m]: "
+              << minimum_position.transpose() << '\n';
+    std::cout << "Maximum position [x y z, m]: "
+              << maximum_position.transpose() << '\n';
+    std::cout << "Particles above the rim: "
+              << particles_above_rim << '\n';
+    std::cout << "Particles outside the tank footprint: "
+              << particles_outside_footprint << '\n';
 
     return 0;
 

@@ -19,3 +19,6 @@ target_link_libraries(learnSPH_experiments learnSPH)
 # Assignment 1(b): standalone density experiment.
 add_executable(learnSPH_density density.cpp)
 target_link_libraries(learnSPH_density learnSPH)
+# Assignment 5(c): custom simulation executable.
+add_executable(learnSPH_custom custom_scene.cpp)
+target_link_libraries(learnSPH_custom learnSPH)
